@@ -1,0 +1,5 @@
+tdlib_commit=89ebded9571b7bb589ec1bd05e585fffa4c580e2
+openssl_version=3.4.0
+watchos_min=26.0
+patches=7a70cf3d111d4624accc9ab449894a967d88c723f961aa5c58321510241cecd9  ./tdlib-darwin-http-memory.patch 3e39cadcc983acdfae7da1dcdf68e9e078223489f1788f0f1dfafa57b21cf251  ./tdlib-token-invalidated.patch 
+xcode=Xcode 27.1 Build version 27A9269 

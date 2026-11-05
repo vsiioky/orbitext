@@ -1,0 +1,285 @@
+name: Orbitext
+options:
+  bundleIdPrefix: com.orbitext
+  xcodeVersion: "16.0"
+
+# Signing team: empty in the repository, set in Signing.local.xcconfig
+# (see Signing.xcconfig).
+configFiles:
+  Debug: Signing.xcconfig
+  Release: Signing.xcconfig
+
+settings:
+  base:
+    # Every target builds in the Swift 6 language mode: Sendable
+    # and actor isolation are checked completely, and a data race the
+    # compiler can see is an error. Not Approachable Concurrency,
+    # NonisolatedNonsendingByDefault, InferIsolatedConformances or default
+    # main actor isolation: they would move TDLib response parsing onto the
+    # main actor. scripts/verify.sh also fails on the concurrency warnings
+    # the mode still reports in app code.
+    SWIFT_VERSION: "6.0"
+
+schemes:
+  Orbitext:
+    build:
+      targets:
+        Orbitext: all
+        OrbitextWatch: all
+        OrbitextWidgetExtension: all
+        OrbitextTests: [test]
+    run:
+      config: Debug
+      executable: Orbitext
+    test:
+      config: Debug
+      targets:
+        - OrbitextTests
+  # Watch-first scheme: the Orbitext scheme's run executable is the
+  # iOS stub, so xcodebuild only offers iOS destinations for it and
+  # the watchOS test bundle can never run from CLI. This scheme keeps
+  # the watch app as the primary product so
+  #   xcodebuild test -scheme OrbitextWatch \
+  #     -destination 'platform=watchOS Simulator,...'
+  # works for CI and local runs.
+  OrbitextWatch:
+    build:
+      targets:
+        OrbitextWatch: all
+        OrbitextTests: [test]
+    run:
+      config: Debug
+      executable: OrbitextWatch
+    test:
+      config: Debug
+      gatherCoverageData: true
+      coverageTargets:
+        - OrbitextWatch
+      targets:
+        - OrbitextTests
+
+  # Same tests under Thread Sanitizer (scripts/verify.sh --tsan passes the
+  # flag directly; this scheme is for running it from Xcode).
+  OrbitextWatchTSan:
+    build:
+      targets:
+        OrbitextWatch: all
+        OrbitextTests: [test]
+    run:
+      config: Debug
+      executable: OrbitextWatch
+      enableThreadSanitizer: true
+    test:
+      config: Debug
+      enableThreadSanitizer: true
+      targets:
+        - OrbitextTests
+
+  # Existing-session UI smoke only. Enable the variable in the Test action or
+  # runner .xctestrun explicitly; normal unit-test schemes never include this.
+  OrbitextLiveQA:
+    build:
+      targets:
+        OrbitextUITests: [test]
+    test:
+      config: Debug
+      captureScreenshotsAutomatically: false
+      environmentVariables:
+        - variable: ORBITEXT_LIVE_QA
+          value: "1"
+          isEnabled: false
+      targets:
+        - name: OrbitextUITests
+          parallelizable: false
+          randomExecutionOrder: false
+
+packages:
+  librlottie:
+    path: Packages/librlottie
+
+targets:
+  # iOS stub. Apple's App Store Connect pipeline rejects standalone
+  # watchOS .ipa packages - the watch app has to live inside an iOS
+  # host bundle at Payload/<stub>.app/Watch/<watch>.app/. This stub
+  # gets distributed to ASC; users never run it (SKIP_INSTALL=YES is
+  # NOT set because we DO want it in the IPA, but it's never opened).
+  Orbitext:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources: [OrbitextStub]
+    dependencies:
+      - target: OrbitextWatch
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.orbitext.app
+        PRODUCT_NAME: Orbitext
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: 3
+        TARGETED_DEVICE_FAMILY: "1,2"
+    info:
+      path: OrbitextStub/Info.plist
+      properties:
+        CFBundleDisplayName: Orbitext
+        # Watch-only container: tells App Store this iOS bundle is
+        # just a wrapper for the embedded watchOS app and must never
+        # be launched on iPhone/iPad. Removes the iPad multitasking
+        # orientations / 120x120 + 152x152 icon requirements that
+        # otherwise apply to every iOS app.
+        ITSWatchOnlyContainer: true
+        LSApplicationLaunchProhibited: true
+        LSRequiresIPhoneOS: true
+        UILaunchScreen: {}
+        UIRequiredDeviceCapabilities:
+          - arm64
+
+  # The actual product - independent watchOS app. Embedded inside
+  # Orbitext.app/Watch/ by Xcode when Orbitext (iOS) depends on it.
+  OrbitextWatch:
+    type: application
+    platform: watchOS
+    # watchOS 26 is the first version where all *new* devices (S9, S10,
+    # S11, Ultra 2/3, SE 3) ship on arm64 only. Older watches (S4-S8,
+    # SE 1/2) still run arm64_32. The binary keeps both slices - App Store
+    # validation rejects a watch build without arm64_32 - and the app is
+    # gated with UIRequiredDeviceCapabilities=arm64, so the App Store only
+    # offers it to arm64 watches (Series 9+, SE 3+). Only armv7k and the
+    # x86_64 simulator slice are excluded.
+    deploymentTarget: "26.0"
+    sources: [Orbitext]
+    dependencies:
+      - target: OrbitextWidgetExtension
+      - package: librlottie
+    settings:
+      base:
+        EXCLUDED_ARCHS: "armv7k x86_64"
+        SKIP_INSTALL: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.orbitext.app.watchkitapp
+        PRODUCT_NAME: OrbitextWatch
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: 3
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        # Ship every AppIcon size in the asset catalog, not just the
+        # ones actool thinks the deployment target needs - ASC icon
+        # validation wants the full watch set plus the 1024 marketing
+        # icon present in the compiled catalog.
+        ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS: YES
+        SWIFT_OBJC_BRIDGING_HEADER: Orbitext/Telegram/TDJsonClient.h
+    configFiles:
+      Debug: Orbitext.xcconfig
+      Release: Orbitext.xcconfig
+    info:
+      path: Orbitext/Info.plist
+      properties:
+        CFBundleDisplayName: Orbitext
+        # Suppress the Export Compliance dialog on every upload. False
+        # is acceptable for TestFlight internal testing - TDLib does
+        # ship OpenSSL (standard AES/SHA via MTProto), but Apple's
+        # mass-market exemption applies to that flavour. Flip to true
+        # and fill the proper compliance form before submitting to the
+        # public App Store.
+        ITSAppUsesNonExemptEncryption: false
+        WKApplication: true
+        # Advertise the identifier used by the named SwiftUI appRefresh handler.
+        # Keep it here so xcodegen preserves the entry in the Watch app plist.
+        BGTaskSchedulerPermittedIdentifiers:
+          - com.orbitext.refresh
+        # Silent Telegram update pushes are delivered through
+        # didReceiveRemoteNotification(_:fetchCompletionHandler:). Without the
+        # remote-notification background mode, watchOS may only hand us pushes
+        # while the app is foreground/active.
+        UIBackgroundModes:
+          - remote-notification
+        # WKWatchOnly + WKCompanionAppBundleIdentifier are mutually
+        # exclusive per ASC validation, and WKWatchOnly already implies
+        # "no companion" so WKRunsIndependentlyOfCompanionApp is
+        # redundant. Keep only WKWatchOnly - the watch app stands
+        # alone, the iOS sibling is just an ASC packaging container.
+        WKWatchOnly: true
+        # The comment above EXCLUDED_ARCHS promises this gate: only
+        # offer the app to arm64-capable watches (S9+/Ultra/SE3). The
+        # iOS stub already declares it, but the watch app's own
+        # Info.plist must carry it too or ASC may offer the app to
+        # S4-S8/SE1-2 hardware.
+        UIRequiredDeviceCapabilities:
+          - arm64
+        NSLocationWhenInUseUsageDescription: "Orbitext uses your location only when you choose to share it in a chat."
+        NSMicrophoneUsageDescription: "Orbitext needs microphone access to record voice messages."
+        TDLIB_API_ID: "$(TDLIB_API_ID)"
+        TDLIB_API_HASH: "$(TDLIB_API_HASH)"
+        TDLIB_FORCE_PUSH_PRODUCTION: "$(TDLIB_FORCE_PUSH_PRODUCTION)"
+        # NSAppTransportSecurity belongs in project.yml so xcodegen
+        # regenerates Info.plist with the ATS exception intact. 5695879
+        # patched Info.plist directly; a subsequent xcodegen run would
+        # otherwise strip the key. TDLib uses raw HTTP fallback against
+        # Telegram IPs when QUIC/WebSocket transports are blocked.
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
+    entitlements:
+      path: Orbitext/Orbitext.entitlements
+      properties:
+        aps-environment: development
+        com.apple.security.application-groups:
+          - group.com.orbitext.shared
+
+  OrbitextTests:
+    type: bundle.unit-test
+    platform: watchOS
+    deploymentTarget: "26.0"
+    sources: [OrbitextTests]
+    dependencies:
+      - target: OrbitextWatch
+    settings:
+      base:
+        # Must match the app target: the host app's swiftmodule is
+        # arm64-only (TDLib sim libs have no x86_64 slice), so an
+        # x86_64 test slice fails with "module ... built for
+        # incompatible target".
+        EXCLUDED_ARCHS: "armv7k x86_64"
+        PRODUCT_BUNDLE_IDENTIFIER: com.orbitext.app.watchkitapp.tests
+        PRODUCT_NAME: OrbitextTests
+        GENERATE_INFOPLIST_FILE: YES
+
+  OrbitextUITests:
+    type: bundle.ui-testing
+    platform: watchOS
+    deploymentTarget: "26.0"
+    sources: [OrbitextUITests]
+    settings:
+      base:
+        EXCLUDED_ARCHS: "armv7k x86_64"
+        PRODUCT_BUNDLE_IDENTIFIER: com.orbitext.app.watchkitapp.uitests
+        PRODUCT_NAME: OrbitextUITests
+        GENERATE_INFOPLIST_FILE: YES
+        # Xcode generates UseUITargetAppProvidedByTests for this standalone
+        # runner. Running UI QA must not install or launch the authenticated app.
+        TEST_TARGET_NAME: ""
+
+  OrbitextWidgetExtension:
+    type: app-extension
+    platform: watchOS
+    deploymentTarget: "26.0"
+    sources:
+      - OrbitextWidget
+      - path: Orbitext/Resources
+        buildPhase: resources
+    settings:
+      base:
+        EXCLUDED_ARCHS: "armv7k"
+        SKIP_INSTALL: NO
+        PRODUCT_BUNDLE_IDENTIFIER: com.orbitext.app.watchkitapp.OrbitextWidget
+        PRODUCT_NAME: OrbitextWidget
+        CODE_SIGN_IDENTITY: "Apple Development"
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: 3
+    info:
+      path: OrbitextWidget/Info.plist
+      properties:
+        CFBundleDisplayName: OrbitextWidget
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: OrbitextWidget/OrbitextWidget.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.orbitext.shared

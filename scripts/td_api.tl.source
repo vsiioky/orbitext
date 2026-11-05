@@ -1,0 +1,12 @@
+# Provenance of scripts/td_api.tl, which is a verbatim copy. Do not edit the
+# schema by hand: replace it with the file of the new TDLib commit and update
+# this file (scripts/codegen-tdlib.py and scripts/check-codegen.sh verify it).
+#
+# td_api.tl is part of TDLib: Copyright Aliaksei Levin (levlam@telegram.org),
+# Arseny Smirnov (arseny30@gmail.com) 2014-2026. Distributed under the Boost
+# Software License, Version 1.0 (LICENSES/BSL-1.0.txt).
+repository=https://github.com/tdlib/td
+path=td/generate/scheme/td_api.tl
+version=1.8.64
+commit=89ebded9571b7bb589ec1bd05e585fffa4c580e2
+sha256=c4eb1de8254f864e7c826b365380cfb46ee7cb3f6e72ab055690aca78e1f9ee7

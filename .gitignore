@@ -1,0 +1,15 @@
+.DS_Store
+*.xcuserdata
+xcuserdata/
+*.xcuserdatad/
+build/
+DerivedData/
+Orbitext.local.xcconfig
+Signing.local.xcconfig
+ExportOptions.plist
+
+# TDLib prebuilt static libraries (about 250 MB, see README "TDLib libraries")
+TDLib/lib-device/
+TDLib/lib-simulator/
+TDLib-build/
+TDLib/lib-device-arm64-only/

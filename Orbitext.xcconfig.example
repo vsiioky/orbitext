@@ -1,0 +1,3 @@
+// Copy to Orbitext.local.xcconfig and fill values from https://my.telegram.org/apps.
+TDLIB_API_ID = your_api_id
+TDLIB_API_HASH = your_api_hash

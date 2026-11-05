@@ -1,0 +1,333 @@
+/* Auth */
+"Sign In" = "Sign In";
+"QR Code" = "QR Code";
+"Phone Number" = "Phone Number";
+"+7..." = "+7...";
+"Include country code, e.g. +7..." = "Include country code, e.g. +7...";
+"Next" = "Next";
+"Code" = "Code";
+"Enter Code" = "Enter Code";
+"Check your Telegram app" = "Check your Telegram app";
+"Confirm" = "Confirm";
+"2FA Password" = "2FA Password";
+"Hint: %@" = "Hint: %@";
+"Password" = "Password";
+"Submit" = "Submit";
+"Waiting for QR..." = "Waiting for QR...";
+"Telegram → Settings\n→ Devices → Link Device" = "Telegram → Settings\n→ Devices → Link Device";
+"After scanning, confirm login in Telegram." = "After scanning, confirm login in Telegram.";
+"Use Phone Number" = "Use Phone Number";
+"Retry" = "Retry";
+"Could not open chat" = "Could not open chat";
+"Back" = "Back";
+"Loading" = "Loading";
+"Failed to load" = "Failed to load";
+
+/* Chat List */
+"Saved Messages" = "Saved Messages";
+"Chats" = "Chats";
+"All" = "All";
+"Pinned" = "Pinned";
+"Load More" = "Load More";
+"Contacts" = "Contacts";
+"No Chats" = "No Chats";
+"Mark Read" = "Mark Read";
+"%lld unread" = "%lld unread";
+"Mute" = "Mute";
+"Unmute" = "Unmute";
+"Unpin" = "Unpin";
+"Pin" = "Pin";
+"Draft:" = "Draft:";
+
+/* Chat View */
+"No messages yet" = "No messages yet";
+"Sending..." = "Sending...";
+"Failed" = "Failed";
+"Draft" = "Draft";
+"New Message" = "New Message";
+"New message" = "New message";
+"Voice" = "Voice";
+"Search" = "Search";
+"Profile" = "Profile";
+"%lld new" = "%lld new";
+"Reply" = "Reply";
+"Forward to" = "Forward to";
+
+/* Message Actions */
+"Message" = "Message";
+"You" = "You";
+"Edit" = "Edit";
+"Forward" = "Forward";
+"Delete" = "Delete";
+"Cancel" = "Cancel";
+"Edit message" = "Edit message";
+"Save" = "Save";
+
+/* Compose */
+"Send" = "Send";
+
+/* Quick Replies */
+"OK" = "OK";
+"Thanks!" = "Thanks!";
+"On my way" = "On my way";
+"Call you later" = "Call you later";
+"Yes" = "Yes";
+"No" = "No";
+
+/* Profile */
+"Channel" = "Channel";
+"Group" = "Group";
+"Send Message" = "Send Message";
+"%lld members" = "%lld members";
+
+/* Contacts */
+"Name or username" = "Name or username";
+"No Contacts" = "No Contacts";
+"No Results" = "No Results";
+
+/* Search */
+"Search messages" = "Search messages";
+"Search Chat" = "Search Chat";
+
+/* Media / Voice */
+"Photo" = "Photo";
+"Video" = "Video";
+"Sticker" = "Sticker";
+"GIF" = "GIF";
+"Call" = "Call";
+"Video call" = "Video call";
+"Missed call" = "Missed call";
+"Declined call" = "Declined call";
+"Location" = "Location";
+"Video message" = "Video message";
+"Audio" = "Audio";
+"Document" = "Document";
+"Contact" = "Contact";
+"Poll" = "Poll";
+"Pinned message" = "Pinned message";
+"Chat created" = "Chat created";
+"Joined the chat" = "Joined the chat";
+"Left the chat" = "Left the chat";
+"%@ pinned a message" = "%@ pinned a message";
+"%@ created the chat" = "%@ created the chat";
+"%@ joined the chat" = "%@ joined the chat";
+"%@ left the chat" = "%@ left the chat";
+"Tap to retry" = "Tap to retry";
+"Video could not be opened" = "Video could not be opened";
+"Video playback interrupted" = "Video playback interrupted";
+
+/* Folder Filter */
+"Chat Filter" = "Chat Filter";
+"Folder Filter" = "Folder Filter";
+"Folder" = "Folder";
+"No folders" = "No folders";
+
+/* QR Auth */
+"Generate QR" = "Generate QR";
+"Generating..." = "Generating...";
+
+/* Settings */
+"Connection" = "Connection";
+"Offline" = "Offline";
+"%lld queued" = "%lld queued";
+"Notifications" = "Notifications";
+"System notification permission is not granted." = "System notification permission is not granted.";
+"Messages" = "Messages";
+"Language" = "Language";
+"Reactions" = "Reactions";
+"Double-Tap Reaction" = "Double-Tap Reaction";
+"System" = "System";
+"English" = "English";
+"Storage" = "Storage";
+"Cache" = "Cache";
+"Clear Cache" = "Clear Cache";
+"Support" = "Support";
+"Report a Problem" = "Report a Problem";
+"Account" = "Account";
+"Log Out" = "Log Out";
+"Log Out?" = "Log Out?";
+"Orbitext v0.1.0" = "Orbitext v0.1.0";
+"Unofficial Telegram client. Not affiliated with Telegram." = "Unofficial Telegram client. Not affiliated with Telegram.";
+"Unofficial app that uses the Telegram API and is part of the Telegram ecosystem. Not affiliated with Telegram." = "Unofficial app that uses the Telegram API and is part of the Telegram ecosystem. Not affiliated with Telegram.";
+"Settings" = "Settings";
+
+/* Connection */
+"Connected" = "Connected";
+"Connecting..." = "Connecting...";
+"Waiting for network..." = "Waiting for network...";
+"Loading..." = "Loading...";
+
+/* Typing */
+"typing..." = "typing...";
+"%@ typing..." = "%@ typing...";
+"%@, %@ typing..." = "%@, %@ typing...";
+"%lld people typing..." = "%lld people typing...";
+"recording voice..." = "recording voice...";
+"recording video..." = "recording video...";
+"uploading photo..." = "uploading photo...";
+"uploading video..." = "uploading video...";
+"sending voice..." = "sending voice...";
+"sending file..." = "sending file...";
+"choosing sticker..." = "choosing sticker...";
+"choosing location..." = "choosing location...";
+"choosing contact..." = "choosing contact...";
+"playing game..." = "playing game...";
+"%@ is recording voice..." = "%@ is recording voice...";
+"%@ is recording video..." = "%@ is recording video...";
+"%@ is uploading photo..." = "%@ is uploading photo...";
+"%@ is uploading video..." = "%@ is uploading video...";
+"%@ is sending voice..." = "%@ is sending voice...";
+"%@ is sending file..." = "%@ is sending file...";
+"%@ is choosing sticker..." = "%@ is choosing sticker...";
+"%@ is choosing location..." = "%@ is choosing location...";
+"%@ is choosing contact..." = "%@ is choosing contact...";
+"%@ is playing game..." = "%@ is playing game...";
+
+/* Time */
+"Today" = "Today";
+"Yesterday" = "Yesterday";
+
+/* Notifications */
+"Mark as Read" = "Mark as Read";
+
+/* Widget */
+"unread" = "unread";
+"No new messages" = "No new messages";
+"Unread messages and latest chat" = "Unread messages and latest chat";
+
+/* Forwarded */
+"Forwarded from %@" = "Forwarded from %@";
+
+/* Accessibility */
+"Offline. Tap to retry." = "Offline. Tap to retry.";
+"%@, online" = "%@, online";
+"Stop voice message" = "Stop voice message";
+"Pause voice message" = "Pause voice message";
+"Play voice message" = "Play voice message";
+"Connected via %@" = "Connected via %@";
+"Scroll to bottom" = "Scroll to bottom";
+"Cancel voice recording" = "Cancel voice recording";
+"Send voice message" = "Send voice message";
+"Start voice recording" = "Start voice recording";
+"Open photo" = "Open photo";
+"Open video" = "Open video";
+"Open video message" = "Open video message";
+"Retry media" = "Retry media";
+"Play video" = "Play video";
+"%@ reaction, %lld" = "%@ reaction, %lld";
+"Sending message" = "Sending message";
+"Send message" = "Send message";
+"Stop sticker animation" = "Stop sticker animation";
+
+/* Release */
+"Orbitext v%@" = "Orbitext v%@";
+"FLOOD_WAIT — %@" = "FLOOD_WAIT — %@";
+"Privacy Policy" = "Privacy Policy";
+
+/* Auth keypad accessibility */
+"Removes last digit" = "Removes last digit";
+"Phone number" = "Phone number";
+"Plus, country code prefix" = "Plus, country code prefix";
+
+/* QR login tutorial */
+"Open Telegram on your phone" = "Open Telegram on your phone";
+"Settings -> Devices -> Link Desktop Device" = "Settings -> Devices -> Link Desktop Device";
+"Point your phone at the QR code" = "Point your phone at the QR code";
+
+/* Support */
+"Couldn't open support chat. Check connection." = "Couldn't open support chat. Check connection.";
+
+"Attach" = "Attach";
+
+"Reply…" = "Reply…";
+
+"Latest messages" = "Latest messages";
+
+"Quick replies" = "Quick replies";
+
+"Emoji" = "Emoji";
+
+"This sticker is unavailable." = "This sticker is unavailable.";
+
+"Couldn't use this location. Try again." = "Couldn't use this location. Try again.";
+
+"Attachments are unavailable." = "Attachments are unavailable.";
+
+"All Chats" = "All Chats";
+
+"Search unavailable" = "Search unavailable";
+
+"Check your connection and try again." = "Check your connection and try again.";
+
+"Enter at least 2 characters." = "Enter at least 2 characters.";
+
+"Voice Message" = "Voice Message";
+
+"Recent stickers" = "Recent stickers";
+
+"Could not load stickers" = "Could not load stickers";
+
+"No recent stickers" = "No recent stickers";
+
+"Use a sticker in Telegram to find it here." = "Use a sticker in Telegram to find it here.";
+
+"Preview sticker" = "Preview sticker";
+
+"Sticker was not sent. Try again." = "Sticker was not sent. Try again.";
+
+"Sending sticker" = "Sending sticker";
+
+"Send sticker" = "Send sticker";
+
+"Choose another sticker" = "Choose another sticker";
+
+"Allow location access for Orbitext in Settings, then retry." = "Allow location access for Orbitext in Settings, then retry.";
+
+"Location access is restricted on this device." = "Location access is restricted on this device.";
+
+"Could not determine your location. Try again." = "Could not determine your location. Try again.";
+
+"Location request timed out. Try again." = "Location request timed out. Try again.";
+
+"Allow location access to continue." = "Allow location access to continue.";
+
+"Finding your location…" = "Finding your location…";
+
+"Accuracy: ±%@ m" = "Accuracy: ±%@ m";
+
+"Only this location is shared." = "Only this location is shared.";
+
+"Location was not sent. Try again." = "Location was not sent. Try again.";
+
+"Sending location" = "Sending location";
+
+"Send location" = "Send location";
+
+"Refresh location" = "Refresh location";
+
+/* Secure database startup errors */
+"This version of Orbitext cannot access secure storage. Install a properly signed version of the app." = "This version of Orbitext cannot access secure storage. Install a properly signed version of the app.";
+"Secure storage cannot be accessed right now. Unlock your Apple Watch, then try again." = "Secure storage cannot be accessed right now. Unlock your Apple Watch, then try again.";
+"Secure storage is unavailable. Try again in a moment." = "Secure storage is unavailable. Try again in a moment.";
+"Could not access the encryption key in secure storage. Try again. If this continues, contact support." = "Could not access the encryption key in secure storage. Try again. If this continues, contact support.";
+"The encryption key in secure storage could not be read. Contact support before changing or reinstalling the app." = "The encryption key in secure storage could not be read. Contact support before changing or reinstalling the app.";
+"Could not create a secure encryption key. Try again. If this continues, contact support." = "Could not create a secure encryption key. Try again. If this continues, contact support.";
+
+/* Bots */
+"Bot menu" = "Bot menu";
+"Keyboard" = "Keyboard";
+"Commands" = "Commands";
+"Bot" = "Bot";
+"Not available on Apple Watch" = "Not available on Apple Watch";
+"The bot did not respond" = "The bot did not respond";
+"Invalid link" = "Invalid link";
+"Open" = "Open";
+"Open link" = "Open link";
+"Scan with your phone" = "Scan with your phone";
+"Share phone number?" = "Share phone number?";
+"The bot will receive your phone number." = "The bot will receive your phone number.";
+"Share" = "Share";
+"Spoiler" = "Spoiler";
+"Show spoiler" = "Show spoiler";
+"Show more" = "Show more";
+"Show less" = "Show less";

@@ -1,0 +1,37 @@
+--- a/tdnet/td/net/DarwinHttp.mm
++++ b/tdnet/td/net/DarwinHttp.mm
+@@ -65,7 +65,12 @@
+               NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+               statusCode = static_cast<int32>(httpResponse.statusCode);
+             }
+-            callback.set_value(std::make_pair(statusCode, BufferSlice(Slice((const char *)([data bytes]), [data length]))));
++            // This is a URL session pool thread. BufferSlice(Slice) puts a
++            // small reply in a per-thread batch buffer, which TDLib frees only
++            // on its own threads: every retired pool thread leaked 20 KB.
++            // A writer gets the reply a buffer of its own.
++            auto reply = BufferWriter(Slice((const char *)([data bytes]), [data length]), 0, 0);
++            callback.set_value(std::make_pair(statusCode, reply.as_buffer_slice()));
+           } else {
+             callback.set_error(static_cast<int32>([error code]), "HTTP request failed");
+           }
+@@ -75,11 +80,18 @@
+ }  // namespace
+ 
+ void DarwinHttp::get(CSlice url, Promise<std::pair<int32, BufferSlice>> promise) {
+-  return http_send(http_get(url), std::move(promise));
++  // Called on TDLib's own threads, which have no autorelease pool: without
++  // one, every request, task and HTTP message stays in the thread's implicit
++  // pool for as long as the thread lives.
++  @autoreleasepool {
++    http_send(http_get(url), std::move(promise));
++  }
+ }
+ 
+ void DarwinHttp::post(CSlice url, Slice data, Promise<std::pair<int32, BufferSlice>> promise) {
+-  return http_send(http_post(url, data), std::move(promise));
++  @autoreleasepool {
++    http_send(http_post(url, data), std::move(promise));
++  }
+ }
+ 
+ }  // namespace td

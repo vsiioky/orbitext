@@ -1,0 +1,74 @@
+name: CI
+
+# The full build runs on a self-hosted Mac, so it never runs on pull requests:
+# code from forks must not execute on that machine. Pull requests get the
+# hosted "lint" job below; a maintainer runs the full build after review.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    if: github.event_name == 'pull_request'
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tools
+        run: brew install swiftformat
+
+      - name: SwiftFormat
+        run: swiftformat --lint .
+
+      - name: Property lists
+        run: git ls-files -z '*.plist' '*.entitlements' '*.xcprivacy' | xargs -0 plutil -lint
+
+      - name: Localization keys
+        run: scripts/release/check-localization-keys.sh
+
+  verify:
+    if: github.event_name != 'pull_request' && github.repository_owner == 'vsiioky'
+    # watchOS 26 SDK and a watchOS simulator are required. Use a self-hosted
+    # Mac (labels below) until hosted runners ship Xcode 27.
+    runs-on: [self-hosted, macOS, xcode-27]
+    timeout-minutes: 60
+    env:
+      DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
+      TDLIB_LIBS_URL: ${{ vars.TDLIB_LIBS_URL }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tools
+        run: |
+          for tool in xcodegen swiftformat ripgrep; do
+            brew list "$tool" >/dev/null 2>&1 || brew install "$tool"
+          done
+
+      - name: TDLib archives (pinned by scripts/tdlib/libs.sha256)
+        run: scripts/tdlib/verify-libs.sh || scripts/tdlib/fetch-libs.sh
+
+      - name: Verify
+        run: scripts/verify.sh
+
+      - name: Thread Sanitizer
+        run: scripts/verify.sh --tsan
+
+      - name: Test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verify-results
+          path: |
+            build/verify/*.log
+            build/verify/*.xcresult
+          if-no-files-found: ignore

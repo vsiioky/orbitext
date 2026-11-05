@@ -1,0 +1,333 @@
+/* Auth */
+"Sign In" = "Кіру";
+"QR Code" = "QR-код";
+"Phone Number" = "Телефон нөмірі";
+"+7..." = "+7...";
+"Include country code, e.g. +7..." = "Ел кодын қоса енгізіңіз, мысалы +7...";
+"Next" = "Келесі";
+"Code" = "Код";
+"Enter Code" = "Кодты енгізіңіз";
+"Check your Telegram app" = "Telegram қолданбасын тексеріңіз";
+"Confirm" = "Растау";
+"2FA Password" = "2FA құпиясөзі";
+"Hint: %@" = "Кеңес: %@";
+"Password" = "Құпиясөз";
+"Submit" = "Жіберу";
+"Waiting for QR..." = "QR күтілуде...";
+"Telegram → Settings\n→ Devices → Link Device" = "Telegram → Баптаулар\n→ Құрылғылар → Құрылғыны қосу";
+"After scanning, confirm login in Telegram." = "Сканерлегеннен кейін Telegram ішінде кіруді растаңыз.";
+"Use Phone Number" = "Телефон нөмірімен кіру";
+"Retry" = "Қайталау";
+"Could not open chat" = "Чатты ашу мүмкін болмады";
+"Back" = "Артқа";
+"Loading" = "Жүктелуде";
+"Failed to load" = "Жүктеу мүмкін болмады";
+
+/* Chat List */
+"Saved Messages" = "Сақталғандар";
+"Chats" = "Чаттар";
+"All" = "Барлығы";
+"Pinned" = "Бекітілгендер";
+"Load More" = "Тағы жүктеу";
+"Contacts" = "Контактілер";
+"No Chats" = "Чаттар жоқ";
+"Mark Read" = "Оқылды";
+"%lld unread" = "%lld оқылмаған";
+"Mute" = "Дыбысты өшіру";
+"Unmute" = "Дыбысты қосу";
+"Unpin" = "Бекітуден шығару";
+"Pin" = "Бекіту";
+"Draft:" = "Нобай:";
+
+/* Chat View */
+"No messages yet" = "Әзірге хабарлама жоқ";
+"Sending..." = "Жіберілуде...";
+"Failed" = "Жіберілмеді";
+"Draft" = "Нобай";
+"New Message" = "Жаңа хабарлама";
+"New message" = "Жаңа хабарлама";
+"Voice" = "Дауыстық";
+"Search" = "Іздеу";
+"Profile" = "Профиль";
+"%lld new" = "%lld жаңа";
+"Reply" = "Жауап беру";
+"Forward to" = "Қайда жіберу";
+
+/* Message Actions */
+"Message" = "Хабарлама";
+"You" = "Сіз";
+"Edit" = "Өзгерту";
+"Forward" = "Қайта жіберу";
+"Delete" = "Жою";
+"Cancel" = "Болдырмау";
+"Edit message" = "Хабарламаны өзгерту";
+"Save" = "Сақтау";
+
+/* Compose */
+"Send" = "Жіберу";
+
+/* Quick Replies */
+"OK" = "Жарайды";
+"Thanks!" = "Рақмет!";
+"On my way" = "Жолдамын";
+"Call you later" = "Кейін қоңырау шаламын";
+"Yes" = "Иә";
+"No" = "Жоқ";
+
+/* Profile */
+"Channel" = "Арна";
+"Group" = "Топ";
+"Send Message" = "Хабарлама жіберу";
+"%lld members" = "%lld қатысушы";
+
+/* Contacts */
+"Name or username" = "Аты немесе пайдаланушы аты";
+"No Contacts" = "Контактілер жоқ";
+"No Results" = "Нәтиже жоқ";
+
+/* Search */
+"Search messages" = "Хабарламаларды іздеу";
+"Search Chat" = "Чатты іздеу";
+
+/* Media / Voice */
+"Photo" = "Фото";
+"Video" = "Бейне";
+"Sticker" = "Стикер";
+"GIF" = "GIF";
+"Call" = "Қоңырау";
+"Video call" = "Бейнеқоңырау";
+"Missed call" = "Жауапсыз қоңырау";
+"Declined call" = "Қабылданбаған қоңырау";
+"Location" = "Орналасқан жер";
+"Video message" = "Бейнехабар";
+"Audio" = "Аудио";
+"Document" = "Құжат";
+"Contact" = "Байланыс";
+"Poll" = "Сауалнама";
+"Pinned message" = "Бекітілген хабарлама";
+"Chat created" = "Чат құрылды";
+"Joined the chat" = "Чатқа қосылды";
+"Left the chat" = "Чаттан шықты";
+"%@ pinned a message" = "%@ хабарламаны бекітті";
+"%@ created the chat" = "%@ чатты құрды";
+"%@ joined the chat" = "%@ чатқа қосылды";
+"%@ left the chat" = "%@ чаттан шықты";
+"Tap to retry" = "Қайталау үшін түртіңіз";
+"Video could not be opened" = "Бейнені ашу мүмкін болмады";
+"Video playback interrupted" = "Бейне ойнату үзілді";
+
+/* Folder Filter */
+"Chat Filter" = "Чат сүзгісі";
+"Folder Filter" = "Бума сүзгісі";
+"Folder" = "Бума";
+"No folders" = "Бумалар жоқ";
+
+/* QR Auth */
+"Generate QR" = "QR-код жасау";
+"Generating..." = "Жасалуда...";
+
+/* Settings */
+"Connection" = "Байланыс";
+"Offline" = "Желіде емес";
+"%lld queued" = "%lld кезекте";
+"Notifications" = "Хабарландырулар";
+"System notification permission is not granted." = "Жүйе хабарландыруларға рұқсат бермеген.";
+"Messages" = "Хабарламалар";
+"Language" = "Тіл";
+"Reactions" = "Реакциялар";
+"Double-Tap Reaction" = "Қос түрту реакциясы";
+"System" = "Жүйе";
+"English" = "English";
+"Storage" = "Жад";
+"Cache" = "Кэш";
+"Clear Cache" = "Кэшті тазалау";
+"Support" = "Қолдау";
+"Report a Problem" = "Мәселе туралы хабарлау";
+"Account" = "Тіркелгі";
+"Log Out" = "Шығу";
+"Log Out?" = "Шығасыз ба?";
+"Orbitext v0.1.0" = "Orbitext v0.1.0";
+"Unofficial Telegram client. Not affiliated with Telegram." = "Telegram-ның бейресми клиенті. Telegram-мен байланысы жоқ.";
+"Unofficial app that uses the Telegram API and is part of the Telegram ecosystem. Not affiliated with Telegram." = "Telegram API-ын пайдаланатын, Telegram экожүйесінің бөлігі болып табылатын бейресми қолданба. Telegram-мен байланысы жоқ.";
+"Settings" = "Баптаулар";
+
+/* Connection */
+"Connected" = "Қосылған";
+"Connecting..." = "Қосылуда...";
+"Waiting for network..." = "Желі күтілуде...";
+"Loading..." = "Жүктелуде...";
+
+/* Typing */
+"typing..." = "жазып жатыр...";
+"%@ typing..." = "%@ жазып жатыр...";
+"%@, %@ typing..." = "%@, %@ жазып жатыр...";
+"%lld people typing..." = "%lld адам жазып жатыр...";
+"recording voice..." = "дауыс жазып жатыр...";
+"recording video..." = "видео жазып жатыр...";
+"uploading photo..." = "фото жіберуде...";
+"uploading video..." = "видео жіберуде...";
+"sending voice..." = "дауыс жіберуде...";
+"sending file..." = "файл жіберуде...";
+"choosing sticker..." = "стикер таңдауда...";
+"choosing location..." = "геолокация таңдауда...";
+"choosing contact..." = "контакт таңдауда...";
+"playing game..." = "ойнауда...";
+"%@ is recording voice..." = "%@ дауыс жазып жатыр...";
+"%@ is recording video..." = "%@ видео жазып жатыр...";
+"%@ is uploading photo..." = "%@ фото жіберуде...";
+"%@ is uploading video..." = "%@ видео жіберуде...";
+"%@ is sending voice..." = "%@ дауыс жіберуде...";
+"%@ is sending file..." = "%@ файл жіберуде...";
+"%@ is choosing sticker..." = "%@ стикер таңдауда...";
+"%@ is choosing location..." = "%@ геолокация таңдауда...";
+"%@ is choosing contact..." = "%@ контакт таңдауда...";
+"%@ is playing game..." = "%@ ойнауда...";
+
+/* Time */
+"Today" = "Бүгін";
+"Yesterday" = "Кеше";
+
+/* Notifications */
+"Mark as Read" = "Оқылды деп белгілеу";
+
+/* Widget */
+"unread" = "оқылмаған";
+"No new messages" = "Жаңа хабарламалар жоқ";
+"Unread messages and latest chat" = "Оқылмаған хабарламалар және соңғы чат";
+
+/* Forwarded */
+"Forwarded from %@" = "%@-дан қайта жіберілді";
+
+/* Accessibility */
+"Offline. Tap to retry." = "Желі жоқ. Қайталау үшін түртіңіз.";
+"%@, online" = "%@, онлайн";
+"Stop voice message" = "Дауыстық хабарды тоқтату";
+"Pause voice message" = "Дауыстық хабарды кідірту";
+"Play voice message" = "Дауыстық хабарды ойнату";
+"Connected via %@" = "%@ арқылы қосылған";
+"Scroll to bottom" = "Төменге айналдыру";
+"Cancel voice recording" = "Дауыстық жазбаны болдырмау";
+"Send voice message" = "Дауыстық хабар жіберу";
+"Start voice recording" = "Дауыстық жазуды бастау";
+"Open photo" = "Фотоны ашу";
+"Open video" = "Бейнені ашу";
+"Open video message" = "Бейнехабарды ашу";
+"Retry media" = "Медианы қайта жүктеу";
+"Play video" = "Бейнені ойнату";
+"%@ reaction, %lld" = "%@ реакциясы, %lld";
+"Sending message" = "Хабарлама жіберілуде";
+"Send message" = "Хабарлама жіберу";
+"Stop sticker animation" = "Стикер анимациясын тоқтату";
+
+/* Release */
+"Orbitext v%@" = "Orbitext v%@";
+"FLOOD_WAIT — %@" = "FLOOD_WAIT — %@";
+"Privacy Policy" = "Құпиялық саясаты";
+
+/* Auth keypad accessibility */
+"Removes last digit" = "Соңғы санды жояды";
+"Phone number" = "Телефон нөмірі";
+"Plus, country code prefix" = "Плюс, ел кодының префиксі";
+
+/* QR login tutorial */
+"Open Telegram on your phone" = "Телефонда Telegram-ды ашыңыз";
+"Settings -> Devices -> Link Desktop Device" = "Баптаулар -> Құрылғылар -> Құрылғы қосу";
+"Point your phone at the QR code" = "Телефонды QR-кодқа бағыттаңыз";
+
+/* Support */
+"Couldn't open support chat. Check connection." = "Қолдау чатын ашу мүмкін болмады. Қосылымды тексеріңіз.";
+
+"Attach" = "Тіркеме";
+
+"Reply…" = "Жауап беру…";
+
+"Latest messages" = "Соңғы хабарлар";
+
+"Quick replies" = "Жылдам жауаптар";
+
+"Emoji" = "Эмодзи";
+
+"This sticker is unavailable." = "Бұл стикер қолжетімсіз.";
+
+"Couldn't use this location. Try again." = "Бұл геопозицияны пайдалану мүмкін болмады. Қайталап көріңіз.";
+
+"Attachments are unavailable." = "Тіркемелер қолжетімсіз.";
+
+"All Chats" = "Барлық чаттар";
+
+"Search unavailable" = "Іздеу қолжетімсіз";
+
+"Check your connection and try again." = "Қосылымды тексеріп, қайталап көріңіз.";
+
+"Enter at least 2 characters." = "Кемінде екі таңба енгізіңіз.";
+
+"Voice Message" = "Дауыстық хабарлама";
+
+"Recent stickers" = "Соңғы стикерлер";
+
+"Could not load stickers" = "Стикерлерді жүктеу мүмкін болмады";
+
+"No recent stickers" = "Соңғы стикерлер жоқ";
+
+"Use a sticker in Telegram to find it here." = "Стикер осында пайда болуы үшін оны Telegram-да жіберіңіз.";
+
+"Preview sticker" = "Стикерді көру";
+
+"Sticker was not sent. Try again." = "Стикер жіберілмеді. Қайталап көріңіз.";
+
+"Sending sticker" = "Стикер жіберілуде";
+
+"Send sticker" = "Стикерді жіберу";
+
+"Choose another sticker" = "Басқасын таңдау";
+
+"Allow location access for Orbitext in Settings, then retry." = "Параметрлерде Orbitext қолданбасына геолокацияға рұқсат беріп, қайталап көріңіз.";
+
+"Location access is restricted on this device." = "Бұл құрылғыда геолокацияға қолжетімділік шектелген.";
+
+"Could not determine your location. Try again." = "Орналасқан жеріңізді анықтау мүмкін болмады. Қайталап көріңіз.";
+
+"Location request timed out. Try again." = "Геолокацияны күту уақыты аяқталды. Қайталап көріңіз.";
+
+"Allow location access to continue." = "Геолокацияға рұқсат беріңіз.";
+
+"Finding your location…" = "Орналасқан жеріңіз анықталуда…";
+
+"Accuracy: ±%@ m" = "Дәлдігі: ±%@ м";
+
+"Only this location is shared." = "Тек осы нүкте жіберіледі.";
+
+"Location was not sent. Try again." = "Геолокация жіберілмеді. Қайталап көріңіз.";
+
+"Sending location" = "Геолокация жіберілуде";
+
+"Send location" = "Геолокацияны жіберу";
+
+"Refresh location" = "Геолокацияны жаңарту";
+
+/* Secure database startup errors */
+"This version of Orbitext cannot access secure storage. Install a properly signed version of the app." = "Orbitext-ның бұл нұсқасы қорғалған сақтау орнына кіре алмайды. Қолтаңбасы дұрыс қойылған қолданба нұсқасын орнатыңыз.";
+"Secure storage cannot be accessed right now. Unlock your Apple Watch, then try again." = "Қорғалған сақтау орнына қазір кіру мүмкін емес. Apple Watch құлпын ашып, әрекетті қайталаңыз.";
+"Secure storage is unavailable. Try again in a moment." = "Қорғалған сақтау орны қолжетімсіз. Сәлден кейін қайталап көріңіз.";
+"Could not access the encryption key in secure storage. Try again. If this continues, contact support." = "Қорғалған сақтау орнынан шифрлау кілтін алу мүмкін болмады. Қайталап көріңіз. Қате қайталанса, қолдау қызметіне хабарласыңыз.";
+"The encryption key in secure storage could not be read. Contact support before changing or reinstalling the app." = "Қорғалған сақтау орнындағы шифрлау кілтін оқу мүмкін болмады. Қолданбаны өзгертпес немесе қайта орнатпас бұрын қолдау қызметіне хабарласыңыз.";
+"Could not create a secure encryption key. Try again. If this continues, contact support." = "Қауіпсіз шифрлау кілтін жасау мүмкін болмады. Қайталап көріңіз. Қате қайталанса, қолдау қызметіне хабарласыңыз.";
+
+/* Bots */
+"Bot menu" = "Бот мәзірі";
+"Keyboard" = "Пернетақта";
+"Commands" = "Командалар";
+"Bot" = "Бот";
+"Not available on Apple Watch" = "Apple Watch-та қолжетімсіз";
+"The bot did not respond" = "Бот жауап бермеді";
+"Invalid link" = "Жарамсыз сілтеме";
+"Open" = "Ашу";
+"Open link" = "Сілтемені ашу";
+"Scan with your phone" = "Телефонмен сканерлеңіз";
+"Share phone number?" = "Телефон нөмірін жіберу керек пе?";
+"The bot will receive your phone number." = "Бот сіздің телефон нөміріңізді алады.";
+"Share" = "Жіберу";
+"Spoiler" = "Спойлер";
+"Show spoiler" = "Спойлерді көрсету";
+"Show more" = "Толығырақ";
+"Show less" = "Жию";

@@ -1,0 +1,58 @@
+# Types the app decodes with the generated TDApi bindings.
+#
+# scripts/codegen-tdlib.py generates every type listed here and everything
+# those types reference through their fields, nothing else. Names are TL names
+# from scripts/td_api.tl.
+#
+#   Message                          the class (or constructor) and all it references
+#   MessageContent = messageText ... only the listed constructors of a class,
+#                                    wherever the class is reached from; any
+#                                    other constructor decodes to .unknown(tag:)
+#   skip ctor.field ...              constructor.field left out of the generated
+#                                    structs; its type is not pulled in
+#
+# A line starting with whitespace continues the previous line. To decode a
+# new TDLib type: add it here, run scripts/codegen.sh, commit the result.
+
+Chat
+ChatAction
+ConnectionState
+File
+FormattedText
+Message
+User
+UserStatus
+
+# Bot keyboards (ReplyMarkup+Mapping.swift). A switch-inline button names a
+# target chat, whose link variant pulls in InternalLinkType (about 230
+# constructors); the mapping reads only the query. Of the reply keyboard
+# button types it handles text, phone number and location; the others (poll,
+# users, chat, web app, ...) decode to .unknown(tag:) and show as unsupported.
+KeyboardButtonType = keyboardButtonTypeText keyboardButtonTypeRequestPhoneNumber
+  keyboardButtonTypeRequestLocation
+skip inlineKeyboardButtonTypeSwitchInline.target_chat
+
+# Never shown. A link preview alone is 55 constructors, chat themes with
+# upgraded gifts another 20.
+skip messageText.link_preview chat.theme
+
+# The mapping reads only the text of a draft (Chat+Mapping.swift).
+InputMessageContent = inputMessageText
+
+# Content the message mapping turns into a domain MessageContent
+# (MessageContent+Mapping.swift); everything else becomes .unsupported.
+MessageContent = messageText messagePhoto messageVideo messageVideoNote
+  messageVoiceNote messageSticker messageAnimatedEmoji messageAnimation
+  messageDocument messageCall messageContact messageLocation messageVenue
+  messagePoll messageAudio messagePinMessage messageBasicGroupChatCreate
+  messageSupergroupChatCreate messageChatAddMembers messageChatJoinByLink
+  messageChatJoinByRequest messageChatDeleteMember
+
+# Updates routed to the typed handlers (Update+Mapping.swift).
+# updateMessageReactions is left out on purpose: td_api.tl marks it "for bots
+# only", a user session gets reactions through updateMessageInteractionInfo.
+Update = updateMessageContent updateMessageEdited updateMessageContentOpened
+  updateDeleteMessages updateChatUnreadMentionCount updateChatTitle
+  updateChatReadInbox updateChatReadOutbox updateChatPhoto updateChatPosition
+  updateChatNotificationSettings updateConnectionState updateUserStatus
+  updateMessageInteractionInfo

@@ -1,0 +1,102 @@
+# Orbitext SwiftFormat configuration
+# Tuned for the watchOS 26 / Swift 6 codebase.
+
+# Swift language version (the language mode in project.yml)
+--swiftversion 6.0
+
+# Indentation
+--indent 4
+--tabwidth 4
+--smarttabs enabled
+--indentcase false
+--ifdef no-indent
+
+# Line width
+--maxwidth 120
+
+# Whitespace
+--trimwhitespace always
+--linebreaks lf
+--commas always
+--semicolons never
+--operatorfunc spaced
+--ranges no-space
+--nospaceoperators ...,..<
+--emptybraces no-space
+
+# Wrapping
+--wraparguments before-first
+--wrapparameters before-first
+--wrapcollections before-first
+--wrapconditions preserve
+--wrapreturntype preserve
+--closingparen balanced
+--wraptypealiases preserve
+
+# Imports
+--importgrouping testable-bottom
+
+# Self
+--self remove
+--selfrequired
+
+# Braces / case / else / guard
+--allman false
+--elseposition same-line
+--guardelse same-line
+
+# Header
+--header strip
+
+# Hoisting
+--patternlet inline
+
+# Trailing closures / commas
+--trailingclosures
+--trailingcommas always
+
+# Misc
+--shortoptionals always
+--redundanttype inferred
+--stripunusedargs closure-only
+--decimalgrouping ignore
+--binarygrouping ignore
+--octalgrouping ignore
+--hexgrouping ignore
+--exponentcase lowercase
+--hexliteralcase uppercase
+--ifdef no-indent
+--xcodeindentation disabled
+--funcattributes prev-line
+--typeattributes prev-line
+--storedvarattrs same-line
+--computedvarattrs prev-line
+--someany enabled
+
+# Enabled rules
+--enable isEmpty
+--enable blankLineAfterImports
+
+# Rules the codebase does not follow by design: one-line guards and bodies,
+# no trailing commas, explicit self where it reads better, long lines. They
+# produced thousands of findings, which made the lint step useless as a gate.
+--disable wrap,trailingCommas,wrapIfStatementBodies,wrapFunctionBodies
+--disable wrapPropertyBodies,wrapLoopBodies,wrapIfExpressionBodies
+--disable wrapMultilineStatementBraces,blankLinesBetweenScopes
+--disable conditionalAssignment,sortSwitchCases,redundantSelf,indent
+--disable noForceUnwrapInTests,wrapArguments
+
+# Generated TDLib bindings are produced by scripts/codegen-tdlib.py.
+--exclude Orbitext/Telegram/Generated
+--enable blockComments
+--enable sortImports
+
+# Disabled rules
+--disable redundantReturn
+--disable andOperator
+# Turns EnvironmentKey types into @Entry and their doc comments into plain
+# comments; the keys stay as they are.
+--disable environmentEntry
+
+# Exclude generated / vendored / build outputs
+--exclude Packages,build,DerivedData,.build,*.xcodeproj,*.xcassets,Orbitext/Vendor,Orbitext.xcconfig,Orbitext.xcconfig.example

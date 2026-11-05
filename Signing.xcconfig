@@ -1,0 +1,9 @@
+// Code signing for every target.
+//
+// The repository leaves the team empty. To build for a device or archive,
+// copy Signing.local.xcconfig.example to Signing.local.xcconfig (gitignored)
+// and set your Apple Developer Team ID there. Simulator builds and tests
+// do not need a team.
+DEVELOPMENT_TEAM =
+
+#include? "Signing.local.xcconfig"

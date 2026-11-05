@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/vsiioky/orbitext/security/advisories/new
+    about: Please report security problems privately, not as a public issue.
+  - name: Telegram account or server problem
+    url: https://telegram.org/support
+    about: Problems with your Telegram account, login codes, or Telegram servers are handled by Telegram, not by this project.

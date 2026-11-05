@@ -1,0 +1,20 @@
+--- a/td/telegram/DeviceTokenManager.cpp
++++ b/td/telegram/DeviceTokenManager.cpp
+@@ -444,6 +444,17 @@
+     int32 retry_after = 0;
+     if (r_flag.is_error()) {
+       auto &error = r_flag.error();
++      if (info.state == TokenInfo::State::Reregister && error.code() == 400 &&
++          error.message() == "TOKEN_WAS_INVALIDATED") {
++        // The server rejected this stored token permanently. Forget only this
++        // registration; retrying it every second cannot restore delivery.
++        LOG(ERROR) << "Discard invalidated device token of type " << static_cast<int32>(token_type) << ": " << error;
++        info.promise.set_error(r_flag.move_as_error());
++        info.state = TokenInfo::State::Sync;
++        info.token.clear();
++        save_info(token_type);
++        return;
++      }
+       if (!G()->is_expected_error(error)) {
+         LOG(ERROR) << "Failed to " << info.state << " device: " << error;
+       } else {

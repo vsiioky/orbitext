@@ -1,0 +1,35 @@
+// TDLib linking — conditional per SDK
+// No HEADER_SEARCH_PATHS: bridging header Orbitext/Telegram/TDJsonClient.h
+// declares the C entrypoints inline; nothing #includes td/telegram/td_*.h.
+
+LIBRARY_SEARCH_PATHS[sdk=watchos*] = $(inherited) $(PROJECT_DIR)/TDLib/lib-device
+LIBRARY_SEARCH_PATHS[sdk=watchsimulator*] = $(inherited) $(PROJECT_DIR)/TDLib/lib-simulator
+
+// Fallback: also add both paths unconditionally so Xcode always finds libs
+LIBRARY_SEARCH_PATHS = $(inherited) $(PROJECT_DIR)/TDLib/lib-device $(PROJECT_DIR)/TDLib/lib-simulator
+
+OTHER_LDFLAGS = $(inherited) -ltdjson_static -ltdjson_private -ltdclient -ltdcore -ltdapi -ltdmtproto -ltddb -ltdsqlite -ltdnet -ltdactor -ltdutils -ltde2e -lssl -lcrypto -lz -lc++
+
+// TDLib static libs ship as fat archives (arm64 + arm64_32) so the
+// App Store validator accepts the watch slice. Keep armv7k excluded -
+// no S1-S3 support, those use 32-bit ARM and TDLib has no slice.
+// Also exclude x86_64 from simulator builds: TDLib/lib-simulator/
+// is arm64-only (Apple Silicon simulator), no x86_64 slice. Running
+// the Mac simulator under Rosetta would otherwise pull in x86_64 and
+// fail to link with "ignoring file ... required architecture x86_64".
+EXCLUDED_ARCHS = armv7k
+EXCLUDED_ARCHS[sdk=iphonesimulator*] = x86_64
+EXCLUDED_ARCHS[sdk=watchsimulator*] = x86_64
+
+// Local Telegram API credentials. Keep real values in Orbitext.local.xcconfig.
+TDLIB_API_ID =
+TDLIB_API_HASH =
+
+// Override push environment used by TDLib registerDevice.
+//   empty / 0 -> use #if DEBUG (sandbox in debug builds, prod in release)
+//   1         -> always send is_app_sandbox=false (production APNs cert)
+// Useful when sandbox cert is rejected by APNs/Telegram and you want to
+// test against the production cert from a Debug build.
+TDLIB_FORCE_PUSH_PRODUCTION =
+
+#include? "Orbitext.local.xcconfig"

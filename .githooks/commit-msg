@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Enabled with: git config core.hooksPath .githooks
+#
+# Keeps history reviewable: a conventional subject line, and no checkpoint
+# or WIP commits on main.
+set -euo pipefail
+
+subject="$(grep -v '^#' "$1" | head -1)"
+branch="$(git symbolic-ref --quiet --short HEAD || true)"
+
+# Messages git writes itself (merges, reverts, autosquash) are allowed as is.
+if [[ "$subject" =~ ^(Merge\ |Revert\ \"|fixup!\ |squash!\ |amend!\ ) ]]; then
+  exit 0
+fi
+
+if ! [[ "$subject" =~ ^(feat|fix|perf|refactor|test|docs|style|build|ci|chore|revert)(\([a-z0-9-]+\))?!?:\ .+ ]]; then
+  echo "commit-msg: subject must look like 'fix: what changed' (feat|fix|perf|refactor|test|docs|style|build|ci|chore|revert)" >&2
+  exit 1
+fi
+if [[ "$branch" == "main" ]] && [[ "$(tr '[:upper:]' '[:lower:]' <<<"$subject")" =~ (checkpoint|wip) ]]; then
+  echo "commit-msg: checkpoint/WIP commits do not belong on main; commit on a branch and squash" >&2
+  exit 1
+fi

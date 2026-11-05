@@ -1,0 +1,10 @@
+* text=auto
+
+*.pbxproj -diff linguist-generated
+Orbitext/Telegram/Generated/** linguist-generated
+Packages/** linguist-vendored
+Orbitext/Vendor/** linguist-vendored
+
+*.png binary
+*.sh text eol=lf
+*.py text eol=lf

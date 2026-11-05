@@ -1,0 +1,333 @@
+/* Auth */
+"Sign In" = "Вход";
+"QR Code" = "QR-код";
+"Phone Number" = "Номер телефона";
+"+7..." = "+7...";
+"Include country code, e.g. +7..." = "Укажите код страны, напр. +7...";
+"Next" = "Далее";
+"Code" = "Код";
+"Enter Code" = "Введите код";
+"Check your Telegram app" = "Проверьте приложение Telegram";
+"Confirm" = "Подтвердить";
+"2FA Password" = "Пароль 2FA";
+"Hint: %@" = "Подсказка: %@";
+"Password" = "Пароль";
+"Submit" = "Отправить";
+"Waiting for QR..." = "Ожидание QR...";
+"Telegram → Settings\n→ Devices → Link Device" = "Telegram → Настройки\n→ Устройства → Подключить";
+"After scanning, confirm login in Telegram." = "После сканирования подтвердите вход в Telegram.";
+"Use Phone Number" = "Войти по номеру";
+"Retry" = "Повторить";
+"Could not open chat" = "Не удалось открыть чат";
+"Back" = "Назад";
+"Loading" = "Загрузка";
+"Failed to load" = "Не удалось загрузить";
+
+/* Chat List */
+"Saved Messages" = "Избранное";
+"Chats" = "Чаты";
+"All" = "Все";
+"Pinned" = "Закреплённые";
+"Load More" = "Загрузить ещё";
+"Contacts" = "Контакты";
+"No Chats" = "Нет чатов";
+"Mark Read" = "Прочитано";
+"%lld unread" = "%lld непрочитанных";
+"Mute" = "Выключить звук";
+"Unmute" = "Включить звук";
+"Unpin" = "Открепить";
+"Pin" = "Закрепить";
+"Draft:" = "Черновик:";
+
+/* Chat View */
+"No messages yet" = "Сообщений пока нет";
+"Sending..." = "Отправка...";
+"Failed" = "Не отправлено";
+"Draft" = "Черновик";
+"New Message" = "Новое сообщение";
+"New message" = "Новое сообщение";
+"Voice" = "Голосовое";
+"Search" = "Поиск";
+"Profile" = "Профиль";
+"%lld new" = "%lld новых";
+"Reply" = "Ответить";
+"Forward to" = "Переслать";
+
+/* Message Actions */
+"Message" = "Сообщение";
+"You" = "Вы";
+"Edit" = "Изменить";
+"Forward" = "Переслать";
+"Delete" = "Удалить";
+"Cancel" = "Отмена";
+"Edit message" = "Редактировать сообщение";
+"Save" = "Сохранить";
+
+/* Compose */
+"Send" = "Отправить";
+
+/* Quick Replies */
+"OK" = "ОК";
+"Thanks!" = "Спасибо!";
+"On my way" = "Уже иду";
+"Call you later" = "Перезвоню";
+"Yes" = "Да";
+"No" = "Нет";
+
+/* Profile */
+"Channel" = "Канал";
+"Group" = "Группа";
+"Send Message" = "Написать";
+"%lld members" = "%lld участников";
+
+/* Contacts */
+"Name or username" = "Имя или юзернейм";
+"No Contacts" = "Нет контактов";
+"No Results" = "Нет результатов";
+
+/* Search */
+"Search messages" = "Поиск сообщений";
+"Search Chat" = "Поиск в чате";
+
+/* Media / Voice */
+"Photo" = "Фото";
+"Video" = "Видео";
+"Sticker" = "Стикер";
+"GIF" = "GIF";
+"Call" = "Звонок";
+"Video call" = "Видеозвонок";
+"Missed call" = "Пропущенный звонок";
+"Declined call" = "Отклонённый звонок";
+"Location" = "Геолокация";
+"Video message" = "Видеосообщение";
+"Audio" = "Аудио";
+"Document" = "Документ";
+"Contact" = "Контакт";
+"Poll" = "Опрос";
+"Pinned message" = "Закреплённое сообщение";
+"Chat created" = "Чат создан";
+"Joined the chat" = "Вступил в чат";
+"Left the chat" = "Покинул чат";
+"%@ pinned a message" = "%@ закрепил(а) сообщение";
+"%@ created the chat" = "%@ создал(а) чат";
+"%@ joined the chat" = "%@ вступил(а) в чат";
+"%@ left the chat" = "%@ покинул(а) чат";
+"Tap to retry" = "Нажмите для повтора";
+"Video could not be opened" = "Не удалось открыть видео";
+"Video playback interrupted" = "Воспроизведение видео прервано";
+
+/* Folder Filter */
+"Chat Filter" = "Фильтр чатов";
+"Folder Filter" = "Фильтр по папке";
+"Folder" = "Папка";
+"No folders" = "Нет папок";
+
+/* QR Auth */
+"Generate QR" = "Создать QR";
+"Generating..." = "Создание...";
+
+/* Settings */
+"Connection" = "Соединение";
+"Offline" = "Не в сети";
+"%lld queued" = "%lld в очереди";
+"Notifications" = "Уведомления";
+"System notification permission is not granted." = "Системное разрешение на уведомления не предоставлено.";
+"Messages" = "Сообщения";
+"Language" = "Язык";
+"Reactions" = "Реакции";
+"Double-Tap Reaction" = "Реакция по двойному тапу";
+"System" = "Системный";
+"English" = "English";
+"Storage" = "Хранилище";
+"Cache" = "Кэш";
+"Clear Cache" = "Очистить кэш";
+"Support" = "Поддержка";
+"Report a Problem" = "Сообщить о проблеме";
+"Account" = "Аккаунт";
+"Log Out" = "Выйти";
+"Log Out?" = "Выйти?";
+"Orbitext v0.1.0" = "Orbitext v0.1.0";
+"Unofficial Telegram client. Not affiliated with Telegram." = "Неофициальный клиент Telegram. Не связан с Telegram.";
+"Unofficial app that uses the Telegram API and is part of the Telegram ecosystem. Not affiliated with Telegram." = "Неофициальное приложение на Telegram API, часть экосистемы Telegram. Не связано с Telegram.";
+"Settings" = "Настройки";
+
+/* Connection */
+"Connected" = "Подключено";
+"Connecting..." = "Подключение...";
+"Waiting for network..." = "Ожидание сети...";
+"Loading..." = "Загрузка...";
+
+/* Typing */
+"typing..." = "печатает...";
+"%@ typing..." = "%@ печатает...";
+"%@, %@ typing..." = "%@, %@ печатают...";
+"%lld people typing..." = "%lld чел. печатают...";
+"recording voice..." = "записывает голосовое...";
+"recording video..." = "записывает видео...";
+"uploading photo..." = "отправляет фото...";
+"uploading video..." = "отправляет видео...";
+"sending voice..." = "отправляет голосовое...";
+"sending file..." = "отправляет файл...";
+"choosing sticker..." = "выбирает стикер...";
+"choosing location..." = "выбирает геолокацию...";
+"choosing contact..." = "выбирает контакт...";
+"playing game..." = "играет...";
+"%@ is recording voice..." = "%@ записывает голосовое...";
+"%@ is recording video..." = "%@ записывает видео...";
+"%@ is uploading photo..." = "%@ отправляет фото...";
+"%@ is uploading video..." = "%@ отправляет видео...";
+"%@ is sending voice..." = "%@ отправляет голосовое...";
+"%@ is sending file..." = "%@ отправляет файл...";
+"%@ is choosing sticker..." = "%@ выбирает стикер...";
+"%@ is choosing location..." = "%@ выбирает геолокацию...";
+"%@ is choosing contact..." = "%@ выбирает контакт...";
+"%@ is playing game..." = "%@ играет...";
+
+/* Time */
+"Today" = "Сегодня";
+"Yesterday" = "Вчера";
+
+/* Notifications */
+"Mark as Read" = "Прочитано";
+
+/* Widget */
+"unread" = "непрочитанных";
+"No new messages" = "Нет новых сообщений";
+"Unread messages and latest chat" = "Непрочитанные и последний чат";
+
+/* Forwarded */
+"Forwarded from %@" = "Переслано от %@";
+
+/* Accessibility */
+"Offline. Tap to retry." = "Нет сети. Нажмите для повтора.";
+"%@, online" = "%@, онлайн";
+"Stop voice message" = "Остановить голосовое";
+"Pause voice message" = "Приостановить голосовое";
+"Play voice message" = "Воспроизвести голосовое";
+"Connected via %@" = "Подключено через %@";
+"Scroll to bottom" = "Прокрутить вниз";
+"Cancel voice recording" = "Отменить запись голосового";
+"Send voice message" = "Отправить голосовое";
+"Start voice recording" = "Начать запись голосового";
+"Open photo" = "Открыть фото";
+"Open video" = "Открыть видео";
+"Open video message" = "Открыть видеосообщение";
+"Retry media" = "Повторить загрузку медиа";
+"Play video" = "Воспроизвести видео";
+"%@ reaction, %lld" = "Реакция %@, %lld";
+"Sending message" = "Отправка сообщения";
+"Send message" = "Отправить сообщение";
+"Stop sticker animation" = "Остановить анимацию стикера";
+
+/* Release */
+"Orbitext v%@" = "Orbitext v%@";
+"FLOOD_WAIT — %@" = "FLOOD_WAIT — %@";
+"Privacy Policy" = "Политика конфиденциальности";
+
+/* Auth keypad accessibility */
+"Removes last digit" = "Удаляет последнюю цифру";
+"Phone number" = "Номер телефона";
+"Plus, country code prefix" = "Плюс, префикс кода страны";
+
+/* QR login tutorial */
+"Open Telegram on your phone" = "Откройте Telegram на телефоне";
+"Settings -> Devices -> Link Desktop Device" = "Настройки -> Устройства -> Добавить устройство";
+"Point your phone at the QR code" = "Наведите телефон на QR-код";
+
+/* Support */
+"Couldn't open support chat. Check connection." = "Не удалось открыть чат поддержки. Проверьте соединение.";
+
+"Attach" = "Вложение";
+
+"Reply…" = "Ответить…";
+
+"Latest messages" = "К последним";
+
+"Quick replies" = "Быстрые ответы";
+
+"Emoji" = "Эмодзи";
+
+"This sticker is unavailable." = "Этот стикер недоступен.";
+
+"Couldn't use this location. Try again." = "Не удалось использовать эту геопозицию. Повторите попытку.";
+
+"Attachments are unavailable." = "Вложения недоступны.";
+
+"All Chats" = "Все чаты";
+
+"Search unavailable" = "Поиск недоступен";
+
+"Check your connection and try again." = "Проверьте подключение и повторите попытку.";
+
+"Enter at least 2 characters." = "Введите не меньше двух символов.";
+
+"Voice Message" = "Голосовое сообщение";
+
+"Recent stickers" = "Недавние стикеры";
+
+"Could not load stickers" = "Не удалось загрузить стикеры";
+
+"No recent stickers" = "Нет недавних стикеров";
+
+"Use a sticker in Telegram to find it here." = "Отправьте стикер в Telegram, чтобы он появился здесь.";
+
+"Preview sticker" = "Просмотреть стикер";
+
+"Sticker was not sent. Try again." = "Стикер не отправлен. Попробуйте ещё раз.";
+
+"Sending sticker" = "Отправка стикера";
+
+"Send sticker" = "Отправить стикер";
+
+"Choose another sticker" = "Выбрать другой";
+
+"Allow location access for Orbitext in Settings, then retry." = "Разрешите Orbitext доступ к геопозиции в настройках и повторите попытку.";
+
+"Location access is restricted on this device." = "Доступ к геопозиции ограничен на этом устройстве.";
+
+"Could not determine your location. Try again." = "Не удалось определить геопозицию. Попробуйте ещё раз.";
+
+"Location request timed out. Try again." = "Время ожидания геопозиции истекло. Попробуйте ещё раз.";
+
+"Allow location access to continue." = "Разрешите доступ к геопозиции.";
+
+"Finding your location…" = "Определяем геопозицию…";
+
+"Accuracy: ±%@ m" = "Точность: ±%@ м";
+
+"Only this location is shared." = "Отправится только эта точка.";
+
+"Location was not sent. Try again." = "Геопозиция не отправлена. Попробуйте ещё раз.";
+
+"Sending location" = "Отправка геопозиции";
+
+"Send location" = "Отправить геопозицию";
+
+"Refresh location" = "Обновить геопозицию";
+
+/* Secure database startup errors */
+"This version of Orbitext cannot access secure storage. Install a properly signed version of the app." = "Эта версия Orbitext не имеет доступа к защищённому хранилищу. Установите версию приложения с корректной подписью.";
+"Secure storage cannot be accessed right now. Unlock your Apple Watch, then try again." = "Сейчас нет доступа к защищённому хранилищу. Разблокируйте Apple Watch и повторите попытку.";
+"Secure storage is unavailable. Try again in a moment." = "Защищённое хранилище недоступно. Повторите попытку чуть позже.";
+"Could not access the encryption key in secure storage. Try again. If this continues, contact support." = "Не удалось получить ключ шифрования из защищённого хранилища. Повторите попытку. Если ошибка повторится, обратитесь в поддержку.";
+"The encryption key in secure storage could not be read. Contact support before changing or reinstalling the app." = "Не удалось прочитать ключ шифрования в защищённом хранилище. Обратитесь в поддержку, прежде чем изменять или переустанавливать приложение.";
+"Could not create a secure encryption key. Try again. If this continues, contact support." = "Не удалось создать защищённый ключ шифрования. Повторите попытку. Если ошибка повторится, обратитесь в поддержку.";
+
+/* Bots */
+"Bot menu" = "Меню бота";
+"Keyboard" = "Клавиатура";
+"Commands" = "Команды";
+"Bot" = "Бот";
+"Not available on Apple Watch" = "Недоступно на Apple Watch";
+"The bot did not respond" = "Бот не ответил";
+"Invalid link" = "Неверная ссылка";
+"Open" = "Открыть";
+"Open link" = "Открыть ссылку";
+"Scan with your phone" = "Отсканируйте телефоном";
+"Share phone number?" = "Отправить номер телефона?";
+"The bot will receive your phone number." = "Бот получит ваш номер телефона.";
+"Share" = "Отправить";
+"Spoiler" = "Спойлер";
+"Show spoiler" = "Показать спойлер";
+"Show more" = "Показать полностью";
+"Show less" = "Свернуть";

@@ -1,0 +1,208 @@
+1	@objc CoreLocationRequestDriver.init()
+1	@objc OrbitextAppDelegate.applicationDidBecomeActive()
+1	@objc OrbitextAppDelegate.applicationDidFinishLaunching()
+1	@objc OrbitextAppDelegate.didFailToRegisterForRemoteNotificationsWithError(_:)
+1	@objc OrbitextAppDelegate.didReceiveRemoteNotification(_:fetchCompletionHandler:)
+1	@objc OrbitextAppDelegate.didRegisterForRemoteNotifications(withDeviceToken:)
+1	@objc OrbitextAppDelegate.init()
+1	@objc VoiceManager.init()
+2	AlbumGalleryPages.body.getter
+5	AlbumGalleryView.body.getter
+2	AlbumGalleryView.pageDots(count:)
+5	AlbumView.body.getter
+4	AlbumView.bubble.getter
+3	AlbumView.cell(for:side:overlayCount:)
+4	AlbumView.mosaic.getter
+1	AlbumVisibilityReadModifier.body(content:)
+1	AppRouter.containsChat(_:)
+1	AppState.refreshCacheSize()
+1	AppState.startEventLoop()
+1	AppState.waitForSyncPipelineToDrain(timeout:)
+1	AppState.waitForSyncPipelineToDrain(until:)
+2	AuthErrorView.body.getter
+9	AuthFlowView.body.getter
+14	AuthMethodView.body.getter
+2	AuthMethodView.languageSelection.getter
+1	AvatarView.body.getter
+1	AvatarView.initials.getter
+1	AvatarView.initialsPlaceholder.getter
+11	BotInteractionPresentation.body(content:)
+2	BotInteractionPresentation.showsAlert.getter
+1	BotKeyboardStore.handleReplyMarkupChanged(chatId:message:)
+1	BotKeyboardStore.load(chatId:)
+3	BotLinkView.body.getter
+4	BotMenuView.body.getter
+3	BotMenuView.commandRow(_:)
+3	BotMenuView.keyboardButton(_:)
+4	BotMenuView.keyboardRows(_:)
+1	BottomVisibilitySentinel.body(content:)
+1	ChatAttachmentsView.attachmentLabel(_:symbol:color:)
+4	ChatAttachmentsView.body.getter
+11	ChatComposerBar.body.getter
+3	ChatFolderPickerView.body.getter
+3	ChatFolderPickerView.folderButton(title:folderId:)
+1	ChatGroupFlagReader.body.getter
+4	ChatHistoryObserver.body(content:)
+1	ChatListLoadMoreLoadingRow.body.getter
+9	ChatListRow.body.getter
+1	ChatListView.activeFolderTitle.getter
+15	ChatListView.body.getter
+9	ChatListView.listControls.getter
+1	ChatMessageListView.body.getter
+1	ChatMessageListView.emptyState.getter
+1	ChatMessageListView.loadingPlaceholders.getter
+1	ChatMessageListView.olderMessagesTrigger.getter
+3	ChatMessageListView.setReplyTarget(_:)
+1	ChatMessageStore.handleDeleteMessages(chatId:messageIds:)
+2	ChatMessageStore.handleIncomingMessage(_:)
+2	ChatMessageStore.handleMessageSendCompleted(oldMessageId:message:)
+3	ChatMessageStore.loadInitialMessages(chatId:scrollToMessageId:)
+1	ChatMessageStore.loadOlderMessages(chatId:)
+2	ChatMessageStore.optimisticToggleReaction(chatId:messageId:reactionValue:)
+5	ChatMessageStore.replay(_:into:allowMissingSendCompletion:)
+6	ChatNavigationChrome.body(content:)
+1	ChatRepository.activeFolderId.getter
+1	ChatRepository.flushChatListCaches()
+1	ChatRepository.notificationFolderId.getter
+3	ChatRepository.prepareNextChatPageIfNeeded()
+2	ChatRepository.removeTombstonedRowsFromOtherCaches(_:)
+2	ChatRepository.resetLoadedState()
+1	ChatRepository.saveChatsToCache()
+2	ChatRepository.startMissingChatFetchWorkerIfNeeded()
+1	ChatRepository.startTypingExpiryTaskIfNeeded()
+2	ChatRowSkeletonView.body.getter
+5	ChatRowView.body.getter
+20	ChatView.body.getter
+4	CodeKeypadView.body.getter
+2	CodeKeypadView.indicator.getter
+20	ComposeView.body.getter
+1	ConnectionBadge.body.getter
+8	ConnectionRingView.body.getter
+10	ContactDetailView.body.getter
+2	ContactRow.body.getter
+6	ContactsView.body.getter
+1	ContactsView.filteredContacts.getter
+3	DateSeparatorView.body.getter
+4	EditMessageSheet.body.getter
+5	ForwardChatPicker.body.getter
+1	ForwardInfoView.body.getter
+5	InlineKeyboardView.body.getter
+5	InlineKeyboardView.button(at:)
+2	KeypadView.body.getter
+2	KeypadView.keyButton(_:row:col:)
+1	LoadOlderSentinelModifier.body(content:)
+1	LoadingListRow.body.getter
+1	LoadingPlaceholderView.body.getter
+2	LocationMessageView.body.getter
+2	LocationProvider.handleLocations(_:)
+11	LocationShareView.body.getter
+3	MediaRetryButton.body.getter
+5	MediaViewer.body.getter
+1	MediaViewer.photoContent.getter
+4	MessageContentView.body.getter
+1	MessageManager.drainMessageQueue()
+1	MessageManager.init(service:messageQueue:)
+12	MessageRow.body.getter
+2	MessageRow.bubbleContent.getter
+8	MessageRow.bubbleView.getter
+1	MessageRow.preferredQuickReactionDefaults(from:)
+2	MessageSkeletonView.body.getter
+3	MessageTextView.body.getter
+1	MessageTextView.reveal()
+7	MessageTextView.text(_:color:)
+1	MessageVisibilityReadModifier.body(content:)
+4	OrbitextApp.body.getter
+12	PendingMessagesView.body.getter
+4	PhoneKeypadView.body.getter
+4	PhotoThumbnailView.body.getter
+5	PhotoThumbnailView.thumbnailBody.getter
+4	PrivacyPolicyView.body.getter
+8	ProfileView.body.getter
+4	QRCodeView.body.getter
+2	QRCodeView.regenerateIfNeeded(for:)
+8	QRLoginView.body.getter
+2	ReactionsBar.body.getter
+3	ReactionsBar.reactionCapsule(for:)
+2	ReplyPreviewView.body.getter
+5	RootView.body.getter
+3	ScrollToBottomButton.body.getter
+15	SearchView.body.getter
+1	SearchView.searchResultRow(_:)
+1	ServicePillView.body.getter
+44	SettingsView.body.getter
+2	SettingsView.languageSelection.getter
+1	StepView.body.getter
+4	StickerPickerView.body.getter
+1	StickerPickerView.loadStickers()
+2	StickerPickerView.stateContent(_:symbol:)
+5	StickerPickerView.stickerList.getter
+5	StickerPickerView.stickerPreview(_:)
+4	StickerView.body.getter
+1	TDChatListLoadCoordinator.begin(key:)
+2	TDLibImage.body.getter
+1	TDLocalConcurrencyLimiter.acquire()
+1	TDRequestTelemetry.dump()
+1	TDRequestTelemetry.periodicDump()
+1	TDRequestThrottle.acquireSlot(method:generation:waitsForFullLimit:)
+2	TDRequestThrottle.remainingBackoff(method:)
+5	TelemetryDebugSection.body.getter
+4	TimelineRowWindow.body.getter
+5	TwoFactorView.body.getter
+4	TypingIndicatorView.body.getter
+1	TypingIndicatorView.startAnimation()
+2	VideoPlayerView.body.getter
+2	VideoPlayerView.logVideoPreflight(for:asset:)
+4	VideoThumbnailView.body.getter
+1	VideoThumbnailView.thumbnailBody.getter
+3	VideoThumbnailView.thumbnailOverlay.getter
+1	VideoThumbnailView.thumbnailPlaceholder.getter
+1	View.wristListStyle()
+7	VoicePlayerView.body.getter
+16	VoiceRecorderView.body.getter
+8	WatchChatTimeline.body.getter
+4	WaveformView.body.getter
+2	WristBubbleBackground.body.getter
+4	WristGlassBackground.body.getter
+1	WristGlassButtonStyle.makeBody(configuration:)
+1	WristScreenBackground.body.getter
+5	ZoomablePhotoView.body.getter
+1	implicit ChatMessageStore.replay(_:into:allowMissingSendCompletion:)
+1	implicit ChatRepository._folderFilterEnabled.didset
+1	implicit ChatRepository.reconcileFolderSelection()
+3	static $s....makePreview()
+1	static AlbumGalleryView.$s....getter
+1	static AlbumView.$s....getter
+2	static AuthFlowView.$s....getter
+2	static ChatComposerBar.$s....getter
+1	static ChatListView.$s....getter
+1	static ChatMessageListView.$s....getter
+6	static ChatView.$s....getter
+2	static CodeKeypadView.$s....getter
+3	static ComposeView.$s....getter
+2	static ConnectionRingView.$s....getter
+3	static ContactsView.$s....getter
+1	static ImageCache.value<A>(of:)
+4	static LocationShareView.$s....getter
+5	static MediaViewer.$s....getter
+6	static MessageRow.$s....getter
+3	static MessageTextView.$s....getter
+1	static PhoneKeypadView.$s....getter
+2	static PhotoThumbnailView.$s....getter
+1	static ProfileView.$s....getter
+2	static QRCodeView.$s....getter
+1	static QRLoginView.$s....getter
+3	static SearchView.$s....getter
+2	static SettingsView.$s....getter
+7	static StickerPickerView.$s....getter
+3	static StickerView.$s....getter
+1	static TDLibImage.$s....getter
+1	static TelemetryDebugSection.$s....getter
+1	static TimelineRowWindow.$s....getter
+1	static TwoFactorView.$s....getter
+1	static TypingIndicatorView.$s....getter
+3	static VideoPlayerView.$s....getter
+2	static VideoThumbnailView.$s....getter
+6	static VoicePlayerView.$s....getter
+2	static VoiceRecorderView.$s....getter
+2	static ZoomablePhotoView.$s....getter
+1	thunk for @callee_guaranteed (@in_guaranteed ChatInfo) -> (@out ChatInfo) with global actor constraint MainActor
