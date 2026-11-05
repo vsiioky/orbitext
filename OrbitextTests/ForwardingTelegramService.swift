@@ -110,6 +110,24 @@ class ForwardingTelegramService: @preconcurrency TelegramServiceProtocol {
         try await mock.getAvailableMessageReactions(chatId: chatId, messageId: messageId)
     }
 
+    // MARK: - Sponsored messages
+
+    func getChatSponsoredMessages(chatId: Int64) async throws -> SponsoredMessageBatch {
+        try await mock.getChatSponsoredMessages(chatId: chatId)
+    }
+
+    func viewSponsoredMessage(chatId: Int64, messageId: Int64) async throws {
+        try await mock.viewSponsoredMessage(chatId: chatId, messageId: messageId)
+    }
+
+    func clickSponsoredMessage(chatId: Int64, messageId: Int64) async throws {
+        try await mock.clickSponsoredMessage(chatId: chatId, messageId: messageId)
+    }
+
+    func reportSponsoredMessage(chatId: Int64, messageId: Int64, optionId: Data) async throws -> SponsoredReportResult {
+        try await mock.reportSponsoredMessage(chatId: chatId, messageId: messageId, optionId: optionId)
+    }
+
     // MARK: - Bots
 
     func getCallbackQueryAnswer(chatId: Int64, messageId: Int64, data: String) async throws -> BotCallbackAnswer {

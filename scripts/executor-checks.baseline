@@ -15,6 +15,7 @@
 4	AlbumView.mosaic.getter
 1	AlbumVisibilityReadModifier.body(content:)
 1	AppRouter.containsChat(_:)
+1	AppState.handleEvent(_:)
 1	AppState.refreshCacheSize()
 1	AppState.startEventLoop()
 1	AppState.waitForSyncPipelineToDrain(timeout:)
@@ -72,7 +73,8 @@
 1	ChatRepository.startTypingExpiryTaskIfNeeded()
 2	ChatRowSkeletonView.body.getter
 5	ChatRowView.body.getter
-20	ChatView.body.getter
+5	ChatSponsoredSection.body.getter
+22	ChatView.body.getter
 4	CodeKeypadView.body.getter
 2	CodeKeypadView.indicator.getter
 20	ComposeView.body.getter
@@ -90,6 +92,7 @@
 5	InlineKeyboardView.button(at:)
 2	KeypadView.body.getter
 2	KeypadView.keyButton(_:row:col:)
+6	LicenseTextView.body.getter
 1	LoadOlderSentinelModifier.body(content:)
 1	LoadingListRow.body.getter
 1	LoadingPlaceholderView.body.getter
@@ -111,6 +114,8 @@
 1	MessageTextView.reveal()
 7	MessageTextView.text(_:color:)
 1	MessageVisibilityReadModifier.body(content:)
+6	OpenSourceLicensesView.body.getter
+2	OpenSourceLicensesView.documentLink(_:systemImage:)
 4	OrbitextApp.body.getter
 12	PendingMessagesView.body.getter
 4	PhoneKeypadView.body.getter
@@ -124,13 +129,19 @@
 2	ReactionsBar.body.getter
 3	ReactionsBar.reactionCapsule(for:)
 2	ReplyPreviewView.body.getter
+4	ReportOptionsView.body.getter
 5	RootView.body.getter
 3	ScrollToBottomButton.body.getter
 15	SearchView.body.getter
 1	SearchView.searchResultRow(_:)
+4	SelfDestructMediaView.body.getter
+1	SelfDestructMediaViewer.body.getter
 1	ServicePillView.body.getter
-44	SettingsView.body.getter
+46	SettingsView.body.getter
 2	SettingsView.languageSelection.getter
+9	SponsoredMessageRow.body.getter
+3	SponsoredMessageRow.header.getter
+3	SponsoredMessageRow.textBlock.getter
 1	StepView.body.getter
 4	StickerPickerView.body.getter
 1	StickerPickerView.loadStickers()
@@ -182,6 +193,7 @@
 2	static ConnectionRingView.$s....getter
 3	static ContactsView.$s....getter
 1	static ImageCache.value<A>(of:)
+1	static LicenseTextView.$s....getter
 4	static LocationShareView.$s....getter
 5	static MediaViewer.$s....getter
 6	static MessageRow.$s....getter
@@ -192,7 +204,9 @@
 2	static QRCodeView.$s....getter
 1	static QRLoginView.$s....getter
 3	static SearchView.$s....getter
+2	static SelfDestructMediaViewer.$s....getter
 2	static SettingsView.$s....getter
+1	static SponsoredMessageRow.$s....getter
 7	static StickerPickerView.$s....getter
 3	static StickerView.$s....getter
 1	static TDLibImage.$s....getter
@@ -206,3 +220,4 @@
 2	static VoiceRecorderView.$s....getter
 2	static ZoomablePhotoView.$s....getter
 1	thunk for @callee_guaranteed (@in_guaranteed ChatInfo) -> (@out ChatInfo) with global actor constraint MainActor
+1	thunk for @escaping @callee_guaranteed () -> () with global actor constraint MainActor

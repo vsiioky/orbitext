@@ -157,6 +157,18 @@ extension MessageContent {
         case .messageChatDeleteMember:
             return .memberLeft
 
+        case .messageExpiredPhoto:
+            return .expiredMedia(.photo)
+
+        case .messageExpiredVideo:
+            return .expiredMedia(.video)
+
+        case .messageExpiredVideoNote:
+            return .expiredMedia(.videoNote)
+
+        case .messageExpiredVoiceNote:
+            return .expiredMedia(.voiceNote)
+
         case .unknown(let tag):
             // Drop the `message` prefix: the placeholder names the kind.
             return .unsupported(Self.stripMessagePrefix(tag))

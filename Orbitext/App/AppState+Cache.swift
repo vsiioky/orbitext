@@ -46,6 +46,7 @@ extension AppState {
         chatSession.endAll()
         chatMessageStore.resetAll()
         botKeyboardStore.resetAll()
+        sponsoredMessageStore.resetAll()
         chatRepository.resetLoadedState()
         chatRepository.folderFilterEnabled = false
         chatRepository.selectedFolderId = 0

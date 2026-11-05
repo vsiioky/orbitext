@@ -111,7 +111,8 @@ extension MessageInfo {
             replyToSenderResolved: reply.senderResolved,
             isSending: isSending,
             sendingFailure: sendingFailure,
-            replyMarkup: msg.replyMarkup.flatMap(ReplyMarkup.init(tdApi:))
+            replyMarkup: msg.replyMarkup.flatMap(ReplyMarkup.init(tdApi:)),
+            selfDestruct: SelfDestructPolicy(tdApi: msg.selfDestructType)
         )
     }
 }

@@ -116,6 +116,10 @@ final class ImageCache {
         }
     }
     private var fileOperations: [String: FileOperation] = [:]
+    /// Files of self-destructing media (Telegram API Terms of Service 1.4).
+    /// Their bitmaps are never stored, so nothing of them outlives the viewer
+    /// that drew them.
+    private var uncachedFileIds: Set<String> = []
     private static let maxEntries = 50
     private static let maxDecodedBytes = 12 * 1024 * 1024
 
@@ -315,6 +319,20 @@ final class ImageCache {
         playbackFiles.remove(fileId: fileId)
     }
 
+    /// Keeps `fileIds` out of the cache from now on and drops what it holds of
+    /// them, a playback copy included. A load still answers its caller; the
+    /// next one reads the file again from TDLib, which deletes it when the
+    /// message destroys itself.
+    func excludeFromCache(fileIds: Set<String>) {
+        uncachedFileIds.formUnion(fileIds)
+        for fileId in fileIds {
+            for key in imageKeysByFile[fileId] ?? [] {
+                if let node = cache[key] { remove(node) }
+            }
+            playbackFiles.remove(fileId: fileId)
+        }
+    }
+
     func invalidate(fileId: String) {
         if let operation = fileOperations.removeValue(forKey: fileId) {
             operation.invalidate()
@@ -332,6 +350,9 @@ final class ImageCache {
         fileOperations.removeAll()
         cache.removeAll()
         imageKeysByFile.removeAll()
+        // File ids number the files of one TDLib instance; after a new session
+        // the same id names another file.
+        uncachedFileIds.removeAll()
         decodedByteCount = 0
         head = nil
         tail = nil
@@ -363,6 +384,7 @@ final class ImageCache {
     // MARK: - Private
 
     private func store(key: ImageKey, image: UIImage, data: Data) {
+        guard !uncachedFileIds.contains(key.fileId) else { return }
         let entry = CacheEntry(image: image, data: data)
         guard entry.decodedBytes <= Self.maxDecodedBytes else { return }
         if let existing = cache[key] {

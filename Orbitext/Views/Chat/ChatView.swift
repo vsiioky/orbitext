@@ -15,6 +15,7 @@ struct ChatView: View {
     @Environment(MessageManager.self) private var messageManager
     @Environment(ChatMessageStore.self) private var chatMessageStore
     @Environment(BotKeyboardStore.self) private var botKeyboardStore
+    @Environment(SponsoredMessageStore.self) private var sponsoredMessageStore
 
     let chatId: Int64
     var initialChat: ChatInfo?
@@ -30,6 +31,9 @@ struct ChatView: View {
     /// `ChatGroupFlagReader`. Reading the directory here would redraw the
     /// whole screen for a change to any chat; the flag changes once.
     @State private var isGroup = false
+    /// Self-destructing media the user opened. The screen hosts its viewer:
+    /// the row turns into "expired" while the media is still on screen.
+    @State private var openedSelfDestructMedia: MessageInfo?
 
     var body: some View {
         ScrollViewReader { proxy in
@@ -73,6 +77,10 @@ struct ChatView: View {
                         }
                     )
 
+                    ChatSponsoredSection(chatId: chatId, fallback: initialChat) { ad in
+                        await openSponsoredMessage(ad)
+                    }
+
                     ChatTypingFooter(chatId: chatId, fallback: initialChat)
 
                     PendingMessagesView(chatId: chatId)
@@ -81,6 +89,10 @@ struct ChatView: View {
                 }
                 .background { WristScreenBackground() }
                 .background { ChatGroupFlagReader(chatId: chatId, fallback: initialChat, isGroup: $isGroup) }
+                .environment(\.openSelfDestructMedia) { openedSelfDestructMedia = $0 }
+                .sheet(item: $openedSelfDestructMedia) { message in
+                    SelfDestructMediaViewer(message: message)
+                }
                 .modifier(ChatNavigationChrome(chatId: chatId, fallback: initialChat))
                 // Route compose through the root router so the path stays a
                 // homogeneous [AppDestination]. Mixing types via
@@ -316,6 +328,17 @@ struct ChatView: View {
 
     private func handleInlineButton(_ button: InlineKeyboardButton, in message: MessageInfo) async {
         let result = await messageManager.pressInlineButton(button, in: message)
+        present(result)
+    }
+
+    /// The click is reported first; a t.me link then opens its chat here, any
+    /// other link the sheet that asks before leaving the app.
+    private func openSponsoredMessage(_ ad: SponsoredMessage) async {
+        guard let url = await sponsoredMessageStore.click(ad) else { return }
+        await present(messageManager.openBotLink(url.absoluteString))
+    }
+
+    private func present(_ result: BotButtonResult) {
         // The answer can take seconds; if the user has left this chat (or
         // pushed another screen over it) by then, presenting or navigating
         // would act on the wrong screen.

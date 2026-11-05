@@ -4,6 +4,8 @@ Orbitext is licensed under the GNU General Public License, version 3 only
 (GPL-3.0-only, see LICENSE).
 It contains or links the third-party software listed below. Each component remains
 under its own license; full texts are in the files referenced for each entry.
+The app shows this file and every license text it references in
+Settings -> Open-Source Licenses.
 "App" marks code compiled into the Orbitext app; "source only" marks code present
 in this repository but not part of the app.
 
@@ -88,7 +90,7 @@ rlottie contains code under the following licenses (map: Packages/librlottie/rlo
 - Upstream: https://gitlab.freedesktop.org/pixman/pixman
 
 ## Swift QR Code generator (Orbitext/Vendor/QRCodeGenerator) - app
-- License: MIT (full text in each file header)
+- License: MIT - LICENSES/MIT-QRCodeGenerator.txt (also in each file header)
 - Copyright (c) Project Nayuki
 - Copyright (c) 2020 fwcd
 - Upstream: https://github.com/fwcd/swift-qrcode-generator

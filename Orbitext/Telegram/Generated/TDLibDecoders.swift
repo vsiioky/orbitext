@@ -1132,6 +1132,75 @@ extension TDApi {
         )
     }
 
+    // MARK: advertisementSponsor -> AdvertisementSponsor
+    public static func decodeAdvertisementSponsor(_ dict: [String: Any]) -> AdvertisementSponsor {
+        return AdvertisementSponsor(
+            url: Self.string(dict["url"]),
+            photo: Self.dict(dict["photo"]).map { Self.decodePhoto($0) },
+            info: Self.string(dict["info"])
+        )
+    }
+
+    // MARK: sponsoredMessage -> SponsoredMessage
+    public static func decodeSponsoredMessage(_ dict: [String: Any]) -> SponsoredMessage {
+        return SponsoredMessage(
+            messageId: Self.int64(dict["message_id"]),
+            isRecommended: Self.bool(dict["is_recommended"]),
+            canBeReported: Self.bool(dict["can_be_reported"]),
+            content: Self.dict(dict["content"]).map { Self.decodeMessageContent($0) },
+            sponsor: Self.dict(dict["sponsor"]).map { Self.decodeAdvertisementSponsor($0) },
+            title: Self.string(dict["title"]),
+            buttonText: Self.string(dict["button_text"]),
+            accentColorId: Self.int32(dict["accent_color_id"]),
+            backgroundCustomEmojiId: Self.int64(dict["background_custom_emoji_id"]),
+            additionalInfo: Self.string(dict["additional_info"])
+        )
+    }
+
+    // MARK: sponsoredMessages -> SponsoredMessages
+    public static func decodeSponsoredMessages(_ dict: [String: Any]) -> SponsoredMessages {
+        return SponsoredMessages(
+            messages: Self.array(dict["messages"]).compactMap { (Self.dict($0).map { Self.decodeSponsoredMessage($0) }) },
+            messagesBetween: Self.int32(dict["messages_between"])
+        )
+    }
+
+    // MARK: reportOption -> ReportOption
+    public static func decodeReportOption(_ dict: [String: Any]) -> ReportOption {
+        return ReportOption(
+            id: Self.bytes(dict["id"]),
+            text: Self.string(dict["text"])
+        )
+    }
+
+    // MARK: reportSponsoredResultOk -> ReportSponsoredResult
+    public static func decodeReportSponsoredResultOk(_ dict: [String: Any]) -> ReportSponsoredResultOk {
+        return ReportSponsoredResultOk()
+    }
+
+    // MARK: reportSponsoredResultFailed -> ReportSponsoredResult
+    public static func decodeReportSponsoredResultFailed(_ dict: [String: Any]) -> ReportSponsoredResultFailed {
+        return ReportSponsoredResultFailed()
+    }
+
+    // MARK: reportSponsoredResultOptionRequired -> ReportSponsoredResult
+    public static func decodeReportSponsoredResultOptionRequired(_ dict: [String: Any]) -> ReportSponsoredResultOptionRequired {
+        return ReportSponsoredResultOptionRequired(
+            title: Self.string(dict["title"]),
+            options: Self.array(dict["options"]).compactMap { (Self.dict($0).map { Self.decodeReportOption($0) }) }
+        )
+    }
+
+    // MARK: reportSponsoredResultAdsHidden -> ReportSponsoredResult
+    public static func decodeReportSponsoredResultAdsHidden(_ dict: [String: Any]) -> ReportSponsoredResultAdsHidden {
+        return ReportSponsoredResultAdsHidden()
+    }
+
+    // MARK: reportSponsoredResultPremiumRequired -> ReportSponsoredResult
+    public static func decodeReportSponsoredResultPremiumRequired(_ dict: [String: Any]) -> ReportSponsoredResultPremiumRequired {
+        return ReportSponsoredResultPremiumRequired()
+    }
+
     // MARK: chatNotificationSettings -> ChatNotificationSettings
     public static func decodeChatNotificationSettings(_ dict: [String: Any]) -> ChatNotificationSettings {
         return ChatNotificationSettings(
@@ -1621,6 +1690,26 @@ extension TDApi {
             caption: Self.dict(dict["caption"]).map { Self.decodeFormattedText($0) },
             isListened: Self.bool(dict["is_listened"])
         )
+    }
+
+    // MARK: messageExpiredPhoto -> MessageContent
+    public static func decodeMessageExpiredPhoto(_ dict: [String: Any]) -> MessageExpiredPhoto {
+        return MessageExpiredPhoto()
+    }
+
+    // MARK: messageExpiredVideo -> MessageContent
+    public static func decodeMessageExpiredVideo(_ dict: [String: Any]) -> MessageExpiredVideo {
+        return MessageExpiredVideo()
+    }
+
+    // MARK: messageExpiredVideoNote -> MessageContent
+    public static func decodeMessageExpiredVideoNote(_ dict: [String: Any]) -> MessageExpiredVideoNote {
+        return MessageExpiredVideoNote()
+    }
+
+    // MARK: messageExpiredVoiceNote -> MessageContent
+    public static func decodeMessageExpiredVoiceNote(_ dict: [String: Any]) -> MessageExpiredVoiceNote {
+        return MessageExpiredVoiceNote()
     }
 
     // MARK: messageLocation -> MessageContent
@@ -2576,6 +2665,10 @@ extension TDApi {
         case "messageVideo": return .messageVideo(decodeMessageVideo(dict))
         case "messageVideoNote": return .messageVideoNote(decodeMessageVideoNote(dict))
         case "messageVoiceNote": return .messageVoiceNote(decodeMessageVoiceNote(dict))
+        case "messageExpiredPhoto": return .messageExpiredPhoto(decodeMessageExpiredPhoto(dict))
+        case "messageExpiredVideo": return .messageExpiredVideo(decodeMessageExpiredVideo(dict))
+        case "messageExpiredVideoNote": return .messageExpiredVideoNote(decodeMessageExpiredVideoNote(dict))
+        case "messageExpiredVoiceNote": return .messageExpiredVoiceNote(decodeMessageExpiredVoiceNote(dict))
         case "messageLocation": return .messageLocation(decodeMessageLocation(dict))
         case "messageVenue": return .messageVenue(decodeMessageVenue(dict))
         case "messageContact": return .messageContact(decodeMessageContact(dict))
@@ -2711,6 +2804,19 @@ extension TDApi {
         case "replyMarkupForceReply": return .replyMarkupForceReply(decodeReplyMarkupForceReply(dict))
         case "replyMarkupShowKeyboard": return .replyMarkupShowKeyboard(decodeReplyMarkupShowKeyboard(dict))
         case "replyMarkupInlineKeyboard": return .replyMarkupInlineKeyboard(decodeReplyMarkupInlineKeyboard(dict))
+        default: return .unknown(tag: tag)
+        }
+    }
+
+    // MARK: ReportSponsoredResult (abstract)
+    public static func decodeReportSponsoredResult(_ dict: [String: Any]) -> ReportSponsoredResult {
+        let tag = (dict["@type"] as? String) ?? ""
+        switch tag {
+        case "reportSponsoredResultOk": return .reportSponsoredResultOk(decodeReportSponsoredResultOk(dict))
+        case "reportSponsoredResultFailed": return .reportSponsoredResultFailed(decodeReportSponsoredResultFailed(dict))
+        case "reportSponsoredResultOptionRequired": return .reportSponsoredResultOptionRequired(decodeReportSponsoredResultOptionRequired(dict))
+        case "reportSponsoredResultAdsHidden": return .reportSponsoredResultAdsHidden(decodeReportSponsoredResultAdsHidden(dict))
+        case "reportSponsoredResultPremiumRequired": return .reportSponsoredResultPremiumRequired(decodeReportSponsoredResultPremiumRequired(dict))
         default: return .unknown(tag: tag)
         }
     }

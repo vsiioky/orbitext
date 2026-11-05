@@ -146,7 +146,20 @@ targets:
     # offers it to arm64 watches (Series 9+, SE 3+). Only armv7k and the
     # x86_64 simulator slice are excluded.
     deploymentTarget: "26.0"
-    sources: [Orbitext]
+    sources:
+      - Orbitext
+      # Notice and license texts shown in Settings -> Open-Source Licenses:
+      # the notice terms of the third-party code in the binary require them
+      # in every distributed copy. Copied flat into the bundle root (the file
+      # names are unique); LicenseDocument.all lists them.
+      - path: THIRD_PARTY_NOTICES.md
+        buildPhase: resources
+      - path: LICENSE
+        buildPhase: resources
+      - path: LICENSES
+        buildPhase: resources
+      - path: Packages/librlottie/rlottie/licenses
+        buildPhase: resources
     dependencies:
       - target: OrbitextWidgetExtension
       - package: librlottie
@@ -172,13 +185,12 @@ targets:
       path: Orbitext/Info.plist
       properties:
         CFBundleDisplayName: Orbitext
-        # Suppress the Export Compliance dialog on every upload. False
-        # is acceptable for TestFlight internal testing - TDLib does
-        # ship OpenSSL (standard AES/SHA via MTProto), but Apple's
-        # mass-market exemption applies to that flavour. Flip to true
-        # and fill the proper compliance form before submitting to the
-        # public App Store.
-        ITSAppUsesNonExemptEncryption: false
+        # The app ships OpenSSL, MTProto and SQLCipher, which is
+        # encryption beyond what the OS provides, so the honest answer is
+        # true. App Store Connect then asks the export compliance
+        # questions on upload; docs/release/export-compliance.md records
+        # the exemption claimed (mass market, 5A992 / EAR 740.17(b)(1)).
+        ITSAppUsesNonExemptEncryption: true
         WKApplication: true
         # Advertise the identifier used by the named SwiftUI appRefresh handler.
         # Keep it here so xcodegen preserves the entry in the Watch app plist.

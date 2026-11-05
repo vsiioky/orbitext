@@ -3,7 +3,32 @@
 <plist version="1.0">
 <dict>
 	<key>NSPrivacyAccessedAPITypes</key>
-	<array/>
+	<array>
+		<!-- UserDefaults: app settings in the standard defaults (CA92.1);
+		     the unread snapshot the app writes to the app group suite for
+		     its widget, see WidgetSync.swift (1C8F.1). -->
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>CA92.1</string>
+				<string>1C8F.1</string>
+			</array>
+		</dict>
+		<!-- File timestamps of files inside the app container only: the age
+		     of the voice note upload copies (Orbitext/Telegram storage) and
+		     the stat/fstat calls of TDLib, SQLite and OpenSSL on their own
+		     files (C617.1). -->
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>C617.1</string>
+			</array>
+		</dict>
+	</array>
 	<key>NSPrivacyCollectedDataTypes</key>
 	<array/>
 	<key>NSPrivacyTracking</key>

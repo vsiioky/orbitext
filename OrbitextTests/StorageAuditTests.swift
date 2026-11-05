@@ -647,6 +647,12 @@ private final class AuditStorageService: TelegramServiceProtocol, @unchecked Sen
     func setReaction(chatId: Int64, messageId: Int64, emoji: String) async throws {}
     func removeReaction(chatId: Int64, messageId: Int64, emoji: String) async throws {}
     func getAvailableMessageReactions(chatId: Int64, messageId: Int64) async throws -> [String] { [] }
+    func getChatSponsoredMessages(chatId: Int64) async throws -> SponsoredMessageBatch {
+        SponsoredMessageBatch(messages: [], messagesBetween: 0)
+    }
+    func viewSponsoredMessage(chatId: Int64, messageId: Int64) async throws {}
+    func clickSponsoredMessage(chatId: Int64, messageId: Int64) async throws {}
+    func reportSponsoredMessage(chatId: Int64, messageId: Int64, optionId: Data) async throws -> SponsoredReportResult { .failed }
     func sendTyping(chatId: Int64) async throws {}
     func searchMessages(query: String, chatId: Int64?) async throws -> [MessageInfo] { [] }
     func getChatFolders() async throws -> [ChatFolder] { [] }

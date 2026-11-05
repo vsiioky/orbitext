@@ -331,3 +331,31 @@
 "Show spoiler" = "Спойлерді көрсету";
 "Show more" = "Толығырақ";
 "Show less" = "Жию";
+
+/* Self-destructing media (Telegram API Terms of Service 1.4) */
+"Photo expired" = "Фото енді қолжетімсіз";
+"Video expired" = "Бейне енді қолжетімсіз";
+"Video message expired" = "Бейнехабар енді қолжетімсіз";
+"Voice message expired" = "Дауыстық хабар енді қолжетімсіз";
+"View once" = "Бір рет көру";
+"Disappears %lld s after opening" = "Ашқаннан кейін %lld с өткен соң жойылады";
+"Tap to open" = "Ашу үшін түртіңіз";
+"Media could not be opened" = "Медианы ашу мүмкін болмады";
+
+/* Sponsored messages in channels (Telegram API Terms of Service 3.3) */
+"Sponsored" = "Жарнама";
+"Recommended" = "Ұсыныс";
+"Ad options" = "Жарнама әрекеттері";
+"Report ad" = "Жарнамаға шағымдану";
+"Ad reported" = "Шағым жіберілді";
+"Ads hidden" = "Жарнама жасырылды";
+"Hiding ads requires Telegram Premium" = "Жарнаманы жасыру үшін Telegram Premium қажет";
+"The ad could not be reported" = "Жарнамаға шағымдану мүмкін болмады";
+
+/* Open-source licenses */
+"Open-Source Licenses" = "Ашық бағдарламалық жасақтама лицензиялары";
+"Third-Party Notices" = "Үшінші тарап бағдарламалары туралы хабарламалар";
+"Orbitext License (GPL-3.0)" = "Orbitext лицензиясы (GPL-3.0)";
+"Licenses" = "Лицензиялар";
+"Source Code" = "Бастапқы код";
+"License text is missing." = "Лицензия мәтіні табылмады.";

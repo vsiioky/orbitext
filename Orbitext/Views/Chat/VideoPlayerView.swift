@@ -3,7 +3,7 @@ import os
 import SwiftUI
 import WatchKit
 
-private struct WatchInlineMoviePlayerView: WKInterfaceObjectRepresentable {
+struct WatchInlineMoviePlayerView: WKInterfaceObjectRepresentable {
     let url: URL
 
     func makeCoordinator() -> InlineMovieLoader {

@@ -62,6 +62,8 @@ enum MessageContent: Equatable, Codable {
     case chatCreated
     case memberJoined
     case memberLeft
+    /// Self-destructed media: only the kind of what it was remains.
+    case expiredMedia(ExpiredMediaKind)
     case unsupported(String)
 
     /// One-line summary for the chat list, search, widget, notifications
@@ -109,6 +111,7 @@ enum MessageContent: Equatable, Codable {
         case .chatCreated: return L10n.string("Chat created")
         case .memberJoined: return L10n.string("Joined the chat")
         case .memberLeft: return L10n.string("Left the chat")
+        case .expiredMedia(let kind): return kind.preview
         case .unsupported(let t): return "[\(t)]"
         }
     }
@@ -158,6 +161,7 @@ enum MessageContent: Equatable, Codable {
         case .chatCreated: return "plus.bubble"
         case .memberJoined: return "person.badge.plus"
         case .memberLeft: return "person.badge.minus"
+        case .expiredMedia: return "flame"
         case .unsupported: return "questionmark.circle"
         }
     }
@@ -272,6 +276,9 @@ struct MessageInfo: Identifiable, Equatable, Codable {
     /// Bot keyboard attached to the message. Kept current by
     /// updateMessageEdited; optional for the same snapshot compatibility.
     var replyMarkup: ReplyMarkup? = nil
+    /// Set when the media destroys itself after it is opened; optional for
+    /// the same snapshot compatibility.
+    var selfDestruct: SelfDestructPolicy? = nil
 
     var deliveryState: MessageDeliveryState {
         if sendingFailure != nil { return .failed }

@@ -331,3 +331,31 @@
 "Show spoiler" = "Show spoiler";
 "Show more" = "Show more";
 "Show less" = "Show less";
+
+/* Self-destructing media (Telegram API Terms of Service 1.4) */
+"Photo expired" = "Photo expired";
+"Video expired" = "Video expired";
+"Video message expired" = "Video message expired";
+"Voice message expired" = "Voice message expired";
+"View once" = "View once";
+"Disappears %lld s after opening" = "Disappears %lld s after opening";
+"Tap to open" = "Tap to open";
+"Media could not be opened" = "Media could not be opened";
+
+/* Sponsored messages in channels (Telegram API Terms of Service 3.3) */
+"Sponsored" = "Sponsored";
+"Recommended" = "Recommended";
+"Ad options" = "Ad options";
+"Report ad" = "Report ad";
+"Ad reported" = "Ad reported";
+"Ads hidden" = "Ads hidden";
+"Hiding ads requires Telegram Premium" = "Hiding ads requires Telegram Premium";
+"The ad could not be reported" = "The ad could not be reported";
+
+/* Open-source licenses */
+"Open-Source Licenses" = "Open-Source Licenses";
+"Third-Party Notices" = "Third-Party Notices";
+"Orbitext License (GPL-3.0)" = "Orbitext License (GPL-3.0)";
+"Licenses" = "Licenses";
+"Source Code" = "Source Code";
+"License text is missing." = "License text is missing.";

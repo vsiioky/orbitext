@@ -221,6 +221,15 @@ struct SettingsView: View {
                     }
                     .listRowInsets(EdgeInsets(top: 8, leading: 11, bottom: 8, trailing: 11))
                     .wristGlassRow()
+
+                    NavigationLink {
+                        OpenSourceLicensesView()
+                    } label: {
+                        Label(L10n.string("Open-Source Licenses"), systemImage: "doc.plaintext")
+                            .font(.caption)
+                    }
+                    .listRowInsets(EdgeInsets(top: 8, leading: 11, bottom: 8, trailing: 11))
+                    .wristGlassRow()
                 }
 
                 #if DEBUG

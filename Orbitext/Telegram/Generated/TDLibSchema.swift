@@ -189,6 +189,10 @@ public enum TDApi {
         case messageVideo(MessageVideo)
         case messageVideoNote(MessageVideoNote)
         case messageVoiceNote(MessageVoiceNote)
+        case messageExpiredPhoto(MessageExpiredPhoto)
+        case messageExpiredVideo(MessageExpiredVideo)
+        case messageExpiredVideoNote(MessageExpiredVideoNote)
+        case messageExpiredVoiceNote(MessageExpiredVoiceNote)
         case messageLocation(MessageLocation)
         case messageVenue(MessageVenue)
         case messageContact(MessageContact)
@@ -280,6 +284,15 @@ public enum TDApi {
         case replyMarkupForceReply(ReplyMarkupForceReply)
         case replyMarkupShowKeyboard(ReplyMarkupShowKeyboard)
         case replyMarkupInlineKeyboard(ReplyMarkupInlineKeyboard)
+        case unknown(tag: String)
+    }
+
+    public indirect enum ReportSponsoredResult: Sendable {
+        case reportSponsoredResultOk(ReportSponsoredResultOk)
+        case reportSponsoredResultFailed(ReportSponsoredResultFailed)
+        case reportSponsoredResultOptionRequired(ReportSponsoredResultOptionRequired)
+        case reportSponsoredResultAdsHidden(ReportSponsoredResultAdsHidden)
+        case reportSponsoredResultPremiumRequired(ReportSponsoredResultPremiumRequired)
         case unknown(tag: String)
     }
 
@@ -1750,6 +1763,85 @@ public enum TDApi {
         }
     }
 
+    public struct AdvertisementSponsor: Sendable {
+        public let url: String
+        public let photo: TDApi.Photo?
+        public let info: String
+        public init(url: String, photo: TDApi.Photo?, info: String) {
+            self.url = url
+            self.photo = photo
+            self.info = info
+        }
+    }
+
+    public struct SponsoredMessage: Sendable {
+        public let messageId: Int64
+        public let isRecommended: Bool
+        public let canBeReported: Bool
+        public let content: TDApi.MessageContent?
+        public let sponsor: TDApi.AdvertisementSponsor?
+        public let title: String
+        public let buttonText: String
+        public let accentColorId: Int32
+        public let backgroundCustomEmojiId: Int64
+        public let additionalInfo: String
+        public init(messageId: Int64, isRecommended: Bool, canBeReported: Bool, content: TDApi.MessageContent?, sponsor: TDApi.AdvertisementSponsor?, title: String, buttonText: String, accentColorId: Int32, backgroundCustomEmojiId: Int64, additionalInfo: String) {
+            self.messageId = messageId
+            self.isRecommended = isRecommended
+            self.canBeReported = canBeReported
+            self.content = content
+            self.sponsor = sponsor
+            self.title = title
+            self.buttonText = buttonText
+            self.accentColorId = accentColorId
+            self.backgroundCustomEmojiId = backgroundCustomEmojiId
+            self.additionalInfo = additionalInfo
+        }
+    }
+
+    public struct SponsoredMessages: Sendable {
+        public let messages: [TDApi.SponsoredMessage]
+        public let messagesBetween: Int32
+        public init(messages: [TDApi.SponsoredMessage], messagesBetween: Int32) {
+            self.messages = messages
+            self.messagesBetween = messagesBetween
+        }
+    }
+
+    public struct ReportOption: Sendable {
+        public let id: Foundation.Data
+        public let text: String
+        public init(id: Foundation.Data, text: String) {
+            self.id = id
+            self.text = text
+        }
+    }
+
+    public struct ReportSponsoredResultOk: Sendable {
+        public init() {}
+    }
+
+    public struct ReportSponsoredResultFailed: Sendable {
+        public init() {}
+    }
+
+    public struct ReportSponsoredResultOptionRequired: Sendable {
+        public let title: String
+        public let options: [TDApi.ReportOption]
+        public init(title: String, options: [TDApi.ReportOption]) {
+            self.title = title
+            self.options = options
+        }
+    }
+
+    public struct ReportSponsoredResultAdsHidden: Sendable {
+        public init() {}
+    }
+
+    public struct ReportSponsoredResultPremiumRequired: Sendable {
+        public init() {}
+    }
+
     public struct ChatNotificationSettings: Sendable {
         public let useDefaultMuteFor: Bool
         public let muteFor: Int32
@@ -2346,6 +2438,22 @@ public enum TDApi {
             self.caption = caption
             self.isListened = isListened
         }
+    }
+
+    public struct MessageExpiredPhoto: Sendable {
+        public init() {}
+    }
+
+    public struct MessageExpiredVideo: Sendable {
+        public init() {}
+    }
+
+    public struct MessageExpiredVideoNote: Sendable {
+        public init() {}
+    }
+
+    public struct MessageExpiredVoiceNote: Sendable {
+        public init() {}
     }
 
     public struct MessageLocation: Sendable {

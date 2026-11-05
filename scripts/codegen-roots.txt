@@ -46,7 +46,13 @@ MessageContent = messageText messagePhoto messageVideo messageVideoNote
   messageDocument messageCall messageContact messageLocation messageVenue
   messagePoll messageAudio messagePinMessage messageBasicGroupChatCreate
   messageSupergroupChatCreate messageChatAddMembers messageChatJoinByLink
-  messageChatJoinByRequest messageChatDeleteMember
+  messageChatJoinByRequest messageChatDeleteMember messageExpiredPhoto
+  messageExpiredVideo messageExpiredVideoNote messageExpiredVoiceNote
+
+# Sponsored messages in channels (Telegram API Terms of Service 3.3,
+# Sponsored+Mapping.swift). Their content uses the MessageContent list above.
+SponsoredMessages
+ReportSponsoredResult
 
 # Updates routed to the typed handlers (Update+Mapping.swift).
 # updateMessageReactions is left out on purpose: td_api.tl marks it "for bots

@@ -12,6 +12,7 @@ final class AppState: RemotePushHandling {
     let messageManager: MessageManager
     let chatMessageStore: ChatMessageStore
     let botKeyboardStore: BotKeyboardStore
+    let sponsoredMessageStore: SponsoredMessageStore
     let networkMonitor = NetworkMonitor()
     let voiceManager = VoiceManager()
     let errorPresenter = ErrorPresenter()
@@ -70,6 +71,7 @@ final class AppState: RemotePushHandling {
         self.messageManager = MessageManager(service: svc, messageQueue: messageQueue)
         self.chatMessageStore = ChatMessageStore(messageManager: self.messageManager, chatRepository: self.chatRepository)
         self.botKeyboardStore = BotKeyboardStore(service: svc)
+        self.sponsoredMessageStore = SponsoredMessageStore(service: svc)
         self.imageCache = ImageCache(service: svc)
         Task.detached(priority: .background) {
             await ImageCache.removeLegacyDiskCache()
@@ -284,6 +286,10 @@ final class AppState: RemotePushHandling {
         case .messageReplyMarkupChanged(let chatId, let messageId, let replyMarkup):
             chatMessageStore.updateMessage(chatId: chatId, messageId: messageId) { $0.replyMarkup = replyMarkup }
         case .messageContentChanged(let chatId, let messageId, let content):
+            if case .expiredMedia = content,
+               let expired = chatMessageStore.messages(for: chatId).first(where: { $0.id == messageId }) {
+                imageCache.excludeFromCache(fileIds: expired.content.mediaFileIds)
+            }
             chatMessageStore.updateMessage(chatId: chatId, messageId: messageId) { $0.content = content }
         case .chatReplyMarkupChanged(let chatId, let message):
             botKeyboardStore.handleReplyMarkupChanged(chatId: chatId, message: message)

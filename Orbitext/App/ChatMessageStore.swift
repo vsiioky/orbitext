@@ -368,6 +368,16 @@ final class ChatMessageStore {
         messagesByChatId[chatId] = messages
     }
 
+    /// The opened media of a self-destructing message is gone for this client
+    /// (Telegram API Terms of Service 1.4). TDLib confirms with expired
+    /// content or a deletion later; nothing may show the media meanwhile.
+    func expireSelfDestructingMedia(chatId: Int64, messageId: Int64) {
+        updateMessage(chatId: chatId, messageId: messageId) { message in
+            guard message.selfDestruct != nil, let kind = message.content.expiredKind else { return }
+            message.content = .expiredMedia(kind)
+        }
+    }
+
     func removeMessage(chatId: Int64, messageId: Int64) {
         handleDeleteMessages(chatId: chatId, messageIds: [messageId])
     }

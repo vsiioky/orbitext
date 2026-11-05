@@ -101,6 +101,13 @@ final class MockTelegramService: @preconcurrency TelegramServiceProtocol {
     var setDraftCompletions: [String?] = []
     var publicChatsByUsername: [String: ChatInfo] = [:]
     var availableReactions: [String] = ["👍", "❤", "🔥"]
+    var sponsoredBatches: [Int64: SponsoredMessageBatch] = [:]
+    var sponsoredError: Error?
+    var sponsoredRequests: [Int64] = []
+    var viewedSponsored: [(chatId: Int64, messageId: Int64)] = []
+    var clickedSponsored: [(chatId: Int64, messageId: Int64)] = []
+    var reportedSponsored: [(chatId: Int64, messageId: Int64, optionId: Data)] = []
+    var sponsoredReportResult: SponsoredReportResult = .reported
     var messagePropertiesByMessage: [Int64: MessageProperties] = [:]
     var defaultMessageProperties: MessageProperties = .default
     var getMessagePropertiesError: Error?
@@ -540,6 +547,25 @@ final class MockTelegramService: @preconcurrency TelegramServiceProtocol {
 
     func getAvailableMessageReactions(chatId: Int64, messageId: Int64) async throws -> [String] {
         availableReactions
+    }
+
+    func getChatSponsoredMessages(chatId: Int64) async throws -> SponsoredMessageBatch {
+        sponsoredRequests.append(chatId)
+        if let sponsoredError { throw sponsoredError }
+        return sponsoredBatches[chatId] ?? SponsoredMessageBatch(messages: [], messagesBetween: 0)
+    }
+
+    func viewSponsoredMessage(chatId: Int64, messageId: Int64) async throws {
+        viewedSponsored.append((chatId, messageId))
+    }
+
+    func clickSponsoredMessage(chatId: Int64, messageId: Int64) async throws {
+        clickedSponsored.append((chatId, messageId))
+    }
+
+    func reportSponsoredMessage(chatId: Int64, messageId: Int64, optionId: Data) async throws -> SponsoredReportResult {
+        reportedSponsored.append((chatId, messageId, optionId))
+        return sponsoredReportResult
     }
 
     func sendTyping(chatId: Int64) async throws {

@@ -107,6 +107,16 @@ protocol TelegramServiceProtocol: TelegramSessionLifecycle, TelegramFileAccess, 
     func removeReaction(chatId: Int64, messageId: Int64, emoji: String) async throws
     func getAvailableMessageReactions(chatId: Int64, messageId: Int64) async throws -> [String]
 
+    // MARK: - Sponsored messages (Telegram API Terms of Service 3.3)
+
+    /// The ads of a channel; TDLib returns none for other chats.
+    func getChatSponsoredMessages(chatId: Int64) async throws -> SponsoredMessageBatch
+    /// The whole text of the ad was on screen.
+    func viewSponsoredMessage(chatId: Int64, messageId: Int64) async throws
+    /// The user followed the ad's link.
+    func clickSponsoredMessage(chatId: Int64, messageId: Int64) async throws
+    func reportSponsoredMessage(chatId: Int64, messageId: Int64, optionId: Data) async throws -> SponsoredReportResult
+
     // MARK: - Bots
 
     func getCallbackQueryAnswer(chatId: Int64, messageId: Int64, data: String) async throws -> BotCallbackAnswer

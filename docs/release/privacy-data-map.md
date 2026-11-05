@@ -34,13 +34,32 @@ Do not answer "Data Not Collected" unless the release owner confirms Apple's def
 
 ## Privacy Manifest Notes
 
-`Orbitext/App/PrivacyInfo.xcprivacy` currently declares no tracking, no tracking domains, no collected data types, and no accessed API categories. The release archive on 2026-05-15 did not emit a blocking privacy manifest warning.
+Both manifests declare no tracking, no tracking domains and no collected data
+types. Required-reason APIs declared:
 
-If Apple/Xcode later emits warnings about required accessed API categories, add only the specific categories named by Xcode and document the reason here.
+| Bundle | Category | Reasons | Where |
+| --- | --- | --- | --- |
+| `Orbitext/App/PrivacyInfo.xcprivacy` | UserDefaults | CA92.1, 1C8F.1 | app settings in standard defaults (`AppPreferencesStore.swift`, `@AppStorage`); widget snapshot in the app group suite (`WidgetSync.swift`) |
+| `Orbitext/App/PrivacyInfo.xcprivacy` | FileTimestamp | C617.1 | voice upload copy ages (`TDLibService+Storage.swift`); `stat`/`fstat`/`lstat` in TDLib, SQLite and OpenSSL on files in the app container |
+| `OrbitextWidget/PrivacyInfo.xcprivacy` | UserDefaults | CA92.1, 1C8F.1 | reads the app group snapshot, falls back to standard defaults (`OrbitextWidget.swift`) |
+
+3B52.1 (files the user granted access to) does not apply: the app opens no
+document picker and reads only files in its own container.
+
+Open question for the release owner: the SQLite inside `libtdsqlite.a` imports
+`statfs` and `fstatfs`, which Apple lists under DiskSpace. SQLite reads the file
+system flags and type to choose its locking style, not free space, and no
+DiskSpace reason describes that, so the category is not declared. If App Store
+Connect reports ITMS-91053 for NSPrivacyAccessedAPICategoryDiskSpace, the
+symbols come from there; decide then whether E174.1 fits or SQLite should be
+built without them. `sysctlbyname` (TDLib, SQLite) is not on Apple's list.
+
+`ReleaseComplianceTests` checks the packaged manifests, so a manifest dropped
+from a target fails the unit tests.
 
 ## Open Release Owner Decisions
 
 - Final App Store privacy answers.
 - Privacy Policy URL.
 - Whether any developer-operated analytics, crash reporting, or backend service will be added.
-- Export compliance/encryption answers.
+- Export compliance/encryption answers (see `export-compliance.md`).

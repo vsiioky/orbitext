@@ -25,7 +25,7 @@
 - [ ] App Privacy answers are completed in App Store Connect.
 - [x] Privacy policy is linked in metadata drafts.
 - [x] Privacy policy is accessible in the app via Settings.
-- [ ] Export compliance answer is recorded.
+- [ ] Export compliance answer is recorded (see `export-compliance.md`).
 - [x] Telegram non-affiliation wording is present in metadata drafts and reviewer notes.
 - [x] Name, subtitle and keywords contain no Telegram trademark and keywords carry no Apple one (the subtitle says "for Apple Watch" to state compatibility); the description names Telegram only to state compatibility, with a non-affiliation disclaimer.
 

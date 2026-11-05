@@ -177,6 +177,7 @@ extension View {
             .environment(appState.messageManager)
             .environment(appState.chatMessageStore)
             .environment(appState.botKeyboardStore)
+            .environment(appState.sponsoredMessageStore)
             .environment(appState.networkMonitor)
             .environment(appState.voiceManager)
             .environment(appState.errorPresenter)

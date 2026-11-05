@@ -78,10 +78,6 @@ Orbitext is not a full Telegram client. Currently not supported:
 
 - Secret chats (end-to-end encrypted chats)
 - Voice and video calls
-- Sponsored messages in channels. Telegram's API terms require them for apps
-  that show channels; this is a known gap and not yet implemented.
-- Self-destructing media. Handling is in progress; until it is finished,
-  such media may not display correctly.
 - Sending photos, videos, or files from the watch (stickers, voice notes, and
   locations can be sent)
 - Sticker pack browsing, scheduled messages, polls, topics in supergroups,

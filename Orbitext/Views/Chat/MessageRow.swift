@@ -37,7 +37,8 @@ struct MessageRow: View {
         var fallback = MessageProperties.default
         fallback.canBeEdited = message.isEditable
         fallback.canBeReplied = !message.isSending && message.sendingFailure == nil
-        fallback.canBeForwarded = !message.isSending && message.sendingFailure == nil
+        // Self-destructing media cannot leave the chat (Terms of Service 1.4).
+        fallback.canBeForwarded = !message.isSending && message.sendingFailure == nil && message.selfDestruct == nil
         fallback.canBeDeletedOnlyForSelf = !message.isSending
         fallback.canBeDeletedForAllUsers = message.isOutgoing && !message.isSending
         return fallback
@@ -134,7 +135,10 @@ struct MessageRow: View {
             }
             .accessibilityValue(message.isOutgoing ? message.deliveryState.accessibilityLabel : "")
 
-        if case .voice = message.content {
+        if message.isSelfDestructingMedia {
+            // The placeholder is a button of its own.
+            bubble
+        } else if case .voice = message.content {
             bubble
                 .onTapGesture { voicePlaybackRequest += 1 }
                 .accessibilityAddTraits(.isButton)
@@ -174,11 +178,15 @@ struct MessageRow: View {
                 )
             }
 
-            MessageContentView(
-                content: message.content,
-                isOutgoing: message.isOutgoing,
-                voicePlaybackRequest: voicePlaybackRequest
-            )
+            if message.isSelfDestructingMedia {
+                SelfDestructMediaView(message: message)
+            } else {
+                MessageContentView(
+                    content: message.content,
+                    isOutgoing: message.isOutgoing,
+                    voicePlaybackRequest: voicePlaybackRequest
+                )
+            }
 
             ReactionsBar(reactions: message.reactions) { emoji in
                 onReact?(emoji)

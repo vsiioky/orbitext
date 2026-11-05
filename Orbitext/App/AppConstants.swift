@@ -68,6 +68,7 @@ enum AppConstants {
         static let logoutServerTimeout: TimeInterval = 8
         static let supportUsername = "vldlb"
         static let supportURL = URL(string: "https://t.me/vldlb")!
+        static let sourceCodeURL = URL(string: "https://github.com/vsiioky/orbitext")!
 
         private static let privacyPolicyURLEN = URL(string: "https://vsiioky.github.io/orbitext/privacy.html")!
         private static let privacyPolicyURLRU = URL(string: "https://vsiioky.github.io/orbitext/privacy.ru.html")!
