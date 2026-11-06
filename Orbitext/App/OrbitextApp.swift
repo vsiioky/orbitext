@@ -16,7 +16,7 @@ struct OrbitextApp: App {
     init() {
         L10n.useLanguage(rawValue: UserDefaults.standard.string(forKey: AppLanguage.storageKey) ?? AppLanguage.system.rawValue)
         guard !AppRuntime.isRunningTests else { return }
-        let appState = AppState(service: TelegramServiceFactory.live())
+        let appState = Self.makeAppState()
         appState.imageCache.removePlaybackCopiesOfEarlierRuns()
         Task.detached(priority: .background) {
             VoiceManager.removePlaybackCopiesOfEarlierRuns()
@@ -56,6 +56,14 @@ struct OrbitextApp: App {
             guard let state = await appState else { return }
             await state.performBackgroundRefresh()
         }
+    }
+
+    /// The app over TDLib; in a Debug build asked for demo mode, over invented data.
+    private static func makeAppState() -> AppState {
+        #if DEBUG
+        if let demo = DemoLaunch.current { return demo.makeAppState() }
+        #endif
+        return AppState(service: TelegramServiceFactory.live())
     }
 
     private var effectiveLocale: Locale {

@@ -17,7 +17,13 @@ https://github.com/vsiioky/orbitext/issues. See
 
 ## Screenshots
 
-<!-- Screenshots will be added here. -->
+<p>
+  <img src="docs/screenshots/chat-list.png" width="200" alt="Chat list">
+  <img src="docs/screenshots/chat-voice.png" width="200" alt="Conversation with a voice note">
+  <img src="docs/screenshots/sign-in-qr.png" width="200" alt="Sign in with a QR code">
+</p>
+
+All screenshots use the built-in demo mode with fictional data.
 
 ## Features
 
@@ -34,12 +40,22 @@ https://github.com/vsiioky/orbitext/issues. See
 - Service messages: calls, contacts, locations, pinned messages, joins and leaves
 - Basic bot support: command menu and inline keyboards
 
+<p>
+  <img src="docs/screenshots/chat.png" width="200" alt="Reply with a quoted preview and a reaction">
+  <img src="docs/screenshots/chat-photo.png" width="200" alt="Photo message">
+  <img src="docs/screenshots/chat-voice.png" width="200" alt="Voice note">
+</p>
+
 **Chat list**
 - Filter by Telegram folder
 - Pinned chats section
 - Unread counters with a muted badge
 - Swipe actions: pin, mute, mark as read
 - Draft indicator, pull to refresh, loading skeletons
+
+<p>
+  <img src="docs/screenshots/chat-list.png" width="200" alt="Chat list with pinned chats and folder filter">
+</p>
 
 **Media**
 - Record and send voice messages (M4A, 16 kHz) and share a location
@@ -49,10 +65,21 @@ https://github.com/vsiioky/orbitext/issues. See
 - Video messages and videos through the WatchKit movie player
 - Photo zoom with the Digital Crown
 
+<p>
+  <img src="docs/screenshots/attachments.png" width="200" alt="Attach menu">
+  <img src="docs/screenshots/media.png" width="200" alt="Sticker picker">
+  <img src="docs/screenshots/photo.png" width="200" alt="Photo viewer">
+</p>
+
 **Sign-in**
 - QR code (scan it from the Telegram app on your phone)
 - Phone number and login code
 - Two-step verification password with hint
+
+<p>
+  <img src="docs/screenshots/sign-in.png" width="200" alt="Sign-in method selection">
+  <img src="docs/screenshots/sign-in-qr.png" width="200" alt="QR code sign-in">
+</p>
 
 **Background work and notifications**
 - Background App Refresh with local notifications
@@ -71,6 +98,12 @@ https://github.com/vsiioky/orbitext/issues. See
 - Contacts with local search, global message search, profiles with online status
 - LRU disk cache and in-memory image cache
 - Localized in English, Russian, and Kazakh
+
+<p>
+  <img src="docs/screenshots/settings.png" width="200" alt="Settings">
+  <img src="docs/screenshots/contacts.png" width="200" alt="Contacts with search">
+  <img src="docs/screenshots/profile.png" width="200" alt="Profile with online status">
+</p>
 
 ## Known limitations
 
@@ -236,6 +269,22 @@ Release builds have no log export yet. Debug builds can write TDLib request
 telemetry to the system log. Whatever you attach, remove phone numbers, names,
 message text, login codes, and anything else private. Report security problems
 privately, see [Security](#security).
+
+### Demo mode
+
+Debug builds include a demo mode with fictional chats, so you can explore the UI
+or take screenshots without a Telegram account, network, or API credentials.
+Launch the `OrbitextWatch` app with `-OrbitextDemo`; add
+`-OrbitextDemoScreen <name>` to open a screen directly (`chatList`, `chat`,
+`chatVoice`, `chatPhoto`, `media`, `attachments`, `photo`, `signIn`,
+`signInQR`, `settings`, `contacts`, `profile`):
+
+```bash
+xcrun simctl launch <simulator> com.orbitext.app.watchkitapp -OrbitextDemo -OrbitextDemoScreen chat
+```
+
+Demo code lives in `Orbitext/Demo/`, is compiled only in Debug builds, and
+`scripts/verify.sh` fails if it leaks into Release code.
 
 ## Contributing
 

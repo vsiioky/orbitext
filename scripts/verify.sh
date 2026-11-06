@@ -104,6 +104,24 @@ if rg -n -w 'TDLibService|TDJsonWrapper|TDClientLifecycleGate' Orbitext Orbitext
   fail "app code names a TDLib transport type: go through TelegramServiceProtocol"
 fi
 
+step "Demo mode is Debug only"
+# Demo mode (Orbitext/Demo) must not reach a Release binary: each of its files
+# is one #if DEBUG block, and the code that names it outside the folder sits
+# inside one too.
+for file in Orbitext/Demo/*.swift; do
+  if [[ "$(head -n 1 "$file")" != "#if DEBUG" || "$(tail -n 1 "$file")" != "#endif" ]]; then
+    fail "$file must be a single #if DEBUG ... #endif block"
+  fi
+done
+demo_types='Demo(Launch|TelegramService|Content|Dates|Media|NotificationCenter)'
+while IFS= read -r file; do
+  awk -v pattern="$demo_types" '
+    /^[[:space:]]*#if DEBUG/ { depth++ }
+    /^[[:space:]]*#endif/ { if (depth > 0) depth-- }
+    $0 ~ pattern && depth == 0 { bad = 1 }
+    END { exit bad }' "$file" || fail "$file names demo mode outside #if DEBUG"
+done < <(rg -l -w "$demo_types" Orbitext OrbitextWidget OrbitextStub --glob '!Orbitext/Demo/**' || true)
+
 step "Generated TDLib bindings"
 if [[ -x scripts/check-codegen.sh ]]; then
   scripts/check-codegen.sh || fail "generated TDLib bindings differ from the generator output"
