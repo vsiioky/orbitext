@@ -3,9 +3,10 @@
 #
 #   scripts/tdlib/package-libs.sh [output.tar.gz]
 #
-# Publish the tarball once per rebuild, for example as a GitHub release asset:
-#   gh release create tdlib-libs-<short sha of libs.sha256> build/tdlib-libs.tar.gz
-# and point TDLIB_LIBS_URL (CI variable) at its download URL.
+# Publish the tarball once per rebuild as a GitHub release asset, tagged with
+# the manifest id this script prints; scripts/tdlib/fetch-libs.sh finds it by
+# that tag:
+#   gh release create tdlib-libs-<manifest id> build/tdlib-libs.tar.gz --latest=false
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"

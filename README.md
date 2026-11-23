@@ -136,6 +136,21 @@ Orbitext is not a full Telegram client. Currently not supported:
 
 ## Build from source
 
+Quick start on an Apple silicon Mac with Xcode 27.1 (about 2 minutes plus the
+65 MB download):
+
+```bash
+git clone https://github.com/vsiioky/orbitext.git
+cd orbitext
+brew install xcodegen swiftformat ripgrep
+scripts/tdlib/fetch-libs.sh        # prebuilt TDLib, checked by SHA-256
+open Orbitext.xcodeproj            # run the OrbitextWatch scheme
+```
+
+That is enough for the simulator, unit tests, and demo mode (see
+[Demo mode](#demo-mode)). To sign in with a real Telegram account, add API
+credentials (step 3); to run on a watch, add your signing team (step 4).
+
 ### 1. Clone
 
 ```bash
@@ -149,39 +164,36 @@ files, so `--recursive` is not needed (see its `README.md`).
 
 ### 2. TDLib libraries
 
-The prebuilt static TDLib and OpenSSL archives (about 250 MB) are not stored in
-the repository. They are pinned by SHA-256 in `scripts/tdlib/libs.sha256` and
-must end up in:
+The static TDLib and OpenSSL archives (about 250 MB unpacked) are not stored in
+git. They are pinned by SHA-256 in `scripts/tdlib/libs.sha256` and installed
+into `TDLib/lib-device/` (watchOS arm64 + arm64_32) and `TDLib/lib-simulator/`
+(simulator arm64). There are no TDLib headers: the `tdjson` entry points are
+declared in the bridging header `Orbitext/Telegram/TDJsonClient.h`.
 
-```
-TDLib/
-  lib-device/       watchOS arm64 + arm64_32, 14 archives
-  lib-simulator/    simulator arm64, same set
-```
-
-There are no TDLib headers: the `tdjson` entry points are declared in the
-bridging header `Orbitext/Telegram/TDJsonClient.h`.
-
-Option A, download the prebuilt libraries. Until the first `tdlib-libs`
-release is published, use option B. The maintainers publish them as the
-`tdlib-libs` asset of a release at
-https://github.com/vsiioky/orbitext/releases. Pass the asset URL:
+**Download (recommended).** The prebuilt libraries are published as a
+[GitHub release](https://github.com/vsiioky/orbitext/releases?q=tdlib-libs)
+whose tag matches the committed manifest. One command downloads the right one,
+checks every file against the manifest, and installs it:
 
 ```bash
-TDLIB_LIBS_URL=<url of the tdlib-libs tarball> scripts/tdlib/fetch-libs.sh
+scripts/tdlib/fetch-libs.sh
 ```
 
-Every file is checked against the manifest.
+Set `TDLIB_LIBS_URL` to use a different copy of the tarball (a mirror or your
+own build packed with `scripts/tdlib/package-libs.sh`).
 
-Option B, build from source (about 10 minutes on a recent Apple silicon Mac).
-You need a TDLib checkout at commit `89ebded9571b7bb589ec1bd05e585fffa4c580e2`
-(TDLib 1.8.64) and the OpenSSL 3.4.0 sources. The two patches in
-`native-patches/` are applied by the script.
+**Build from source** (about 10 minutes). Needed only to change TDLib or to
+check the published binaries. You need a TDLib checkout at commit
+`89ebded9571b7bb589ec1bd05e585fffa4c580e2` (TDLib 1.8.64), the OpenSSL 3.4.0
+sources, `cmake`, and `gperf`. The patches in `native-patches/` are applied by
+the script.
 
 ```bash
+brew install cmake gperf
 git clone https://github.com/tdlib/td.git ../td
 git -C ../td checkout 89ebded9571b7bb589ec1bd05e585fffa4c580e2
-# download and unpack openssl-3.4.0.tar.gz from https://www.openssl.org/source/
+curl -LO https://github.com/openssl/openssl/releases/download/openssl-3.4.0/openssl-3.4.0.tar.gz
+tar -xzf openssl-3.4.0.tar.gz -C ..
 scripts/tdlib/build-all.sh --td ../td --openssl ../openssl-3.4.0 --install
 ```
 

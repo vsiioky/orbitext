@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Tools
-        run: brew install swiftformat
+        run: brew install swiftformat ripgrep
 
       - name: SwiftFormat
         run: swiftformat --lint .

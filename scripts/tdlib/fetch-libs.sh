@@ -2,12 +2,20 @@
 # Downloads the pinned TDLib/OpenSSL archives and checks every file against
 # scripts/tdlib/libs.sha256. Nothing unverified is left in TDLib/.
 #
+#   scripts/tdlib/fetch-libs.sh
 #   TDLIB_LIBS_URL=https://.../tdlib-libs.tar.gz scripts/tdlib/fetch-libs.sh
+#
+# By default it downloads the GitHub release that matches the committed
+# manifest: tag tdlib-libs-<first 12 hex of sha256(libs.sha256)>, published by
+# scripts/tdlib/package-libs.sh. TDLIB_LIBS_URL overrides the location.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT"
-: "${TDLIB_LIBS_URL:?set TDLIB_LIBS_URL to the tarball made by scripts/tdlib/package-libs.sh}"
+RELEASES="https://github.com/vsiioky/orbitext/releases/download"
+manifest_id="$(shasum -a 256 scripts/tdlib/libs.sha256 | cut -c1-12)"
+TDLIB_LIBS_URL="${TDLIB_LIBS_URL:-$RELEASES/tdlib-libs-$manifest_id/tdlib-libs.tar.gz}"
+echo "TDLib libraries: $TDLIB_LIBS_URL"
 
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
